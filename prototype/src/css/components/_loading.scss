@@ -1,0 +1,45 @@
+.loading_screen {
+
+    // Cover the whole view
+    position: fixed;
+    z-index: 66;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-color: $neutral-dark-3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // The logo fades in
+    img {
+        width: 256px;
+        height: auto;
+
+        animation: fadeIn 1s;
+        animation-fill-mode: forwards;
+    }
+
+    // Animation class
+    &.hidden {
+        animation: fadeUp 1s;
+        animation-fill-mode: forwards;
+    }
+}
+
+// The logo fades in first
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
+
+// The screen moves up
+@keyframes fadeUp {
+
+    100% {
+        top: -100%;
+    }
+}

@@ -1,0 +1,47 @@
+/**
+ * Primary Button
+ */
+ .button {
+    
+    box-sizing: border-box;
+    display: inline-block;
+    height: auto;
+    width: auto;
+    min-width: 100px;
+    padding: 8px 16px;
+    
+    border: none;
+    outline: none;
+    box-shadow: $shadow;
+    background-color: $primary-dark-1;
+    
+    color: $white;
+    font-size: $text-l;
+    font-weight: $text-bold;
+    white-space: nowrap;
+    
+    cursor: pointer;
+    transition: 0.25s;
+
+    &:hover {
+
+        background-color: $primary;
+        color:  $neutral-dark-3;
+        box-shadow: $shadow-hover;
+    }
+
+    &:focus {
+
+        background-color: $primary-light-1;
+        color: $neutral-dark-3;
+        box-shadow: $shadow-focus;
+    }
+
+    &:active {
+
+        background-color: $primary-light-2;
+        color: $neutral-dark-3;
+        box-shadow: $shadow-focus;
+    }
+    
+}

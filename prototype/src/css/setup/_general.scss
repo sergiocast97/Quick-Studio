@@ -1,0 +1,24 @@
+/**
+ * CSS Resetting
+ */
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/**
+ * Custom text selection
+ */
+
+::selection {
+    background-color: $primary;
+    color: $neutral-dark-3;
+}

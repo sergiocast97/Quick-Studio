@@ -1,0 +1,38 @@
+/**
+ * Custom cursor
+ */
+ .cursor {
+
+    z-index: 99;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    position: absolute;
+
+    background-color: $primary-dark-1;
+    //mix-blend-mode: difference;
+    
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+    animation: cursorAnim 1s infinite alternate;
+    pointer-events: none;
+}
+
+// Cursor animation (Breathing)
+@keyframes cursorAnim {
+    from { transform: scale(1) }
+    to {   transform: scale(.8) }
+}
+
+// Expanded state for clicking
+.expand {
+    color: $secondary-dark-2;
+    animation: cursorAnim3 0.5s forwards;
+}
+
+// Animation for cursor (Expanding)
+@keyframes cursorAnim3 {
+    0% {  transform: scale(1) }
+    50% { transform: scale(1.5) }
+    100% { transform: scale(1); opacity: 0 }
+}
