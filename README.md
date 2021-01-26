@@ -1,6 +1,7 @@
 # Quick Studio
 
-Sergio Castillo's Honours Project
+Sergio Castillo's Honours Project.
+
 Real-Time, Collaborative Music Recording
 
 ## Setup
