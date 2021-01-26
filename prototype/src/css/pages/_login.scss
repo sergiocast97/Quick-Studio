@@ -1,0 +1,41 @@
+.login_page {
+
+    display: flex;
+    height: 100vh;
+
+    // Set both panels
+    & > * {
+        width: 50%;
+    }
+    
+    .login_panel {
+
+        height: 100%;
+        padding: 128px;
+        background-color: $neutral-light-3;
+    
+    }
+
+    .background {
+
+        // Set the background image
+        background-size: cover;
+        background-position: center;
+
+        .background_filter {
+    
+            // Blurry filter covering image
+            height: 100%;
+            width: 100%;
+            background: rgba($neutral-light-2, 0.1);
+            backdrop-filter: blur(5px);
+
+            padding: 128px;
+    
+            // Center the logo
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
