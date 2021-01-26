@@ -2,17 +2,7 @@
  * Shadows
  */
 
-// Small Shadow
-$shadow-small: 0px 1px 2px rgba( $neutral-dark-3, 0.25);
-$shadow-small-hover: 0px 2px 2px rgba( $neutral-dark-3, 0.25);
-$shadow-small-focus: inset $shadow-small-hover;
-
-// Regular Shadoow
+// Shadoow
 $shadow: 0px 2.5px 5px rgba( $neutral-dark-3, 0.25);
 $shadow-hover: 0px 5px 5px rgba( $neutral-dark-3, 0.25);
 $shadow-focus: inset $shadow-hover;
-
-// Large Shadow
-$shadow-large: 0px 5px 10px rgba( $neutral-dark-3, 0.25);
-$shadow-large-hover: 0px 10px 10px rgba( $neutral-dark-3, 0.25);
-$shadow-large-focus: inset $shadow-large-hover;

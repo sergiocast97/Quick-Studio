@@ -3,7 +3,7 @@
 
 html {
     font-size: 62.5%;
-    font-family: 'Crimson Text', sans-serif;
+    font-family: 'Lato', sans-serif;
     line-height: 1.5;
 }
 
@@ -27,37 +27,37 @@ $text-black : 900;
 h1 {
     font-size: $text-4xl;
     font-weight: $text-black;
-    color: $neutral-dark-3;
+    color: $black;
 }
 
 h2 {
     font-size: $text-3xl;
     font-weight: $text-bold;
-    color: $neutral-dark-3;
+    color: $black;
 }
 
 h3 {
     font-size: $text-2xl;
     font-weight: $text-bold;
-    color: $neutral-dark-3;
+    color: $black;
 }
 
 h4 {
     font-size: $text-xl;
     font-weight: $text-bold;
-    color: $neutral-dark-3;
+    color: $black;
 }
 
 h5 {
     font-size: $text-l;
     font-weight: $text-bold;
-    color: $neutral-dark-3;
+    color: $black;
 }
 
 p, li {
     font-size: $text-l;
     font-weight: $text-regular;
-    color: $neutral-dark-3;
+    color: $black;
 }
 
 a {
