@@ -1,7 +1,8 @@
 # Quick Studio
 
-Sergio Castillo's Honours Project
 Real-Time, Collaborative Music Recording
+
+Welcome to the repository for my Honours Project.
 
 ## Setup
 
@@ -33,4 +34,4 @@ http://localhost:3000/
 
 ## Acknowledgments
 
-* Made with ❤ by Sergio Castillo
+* Made with ❤ by Sergio
