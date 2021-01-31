@@ -2,10 +2,8 @@
  * This file loads the 3 parts of the SCSS codebase:
  *  - Setup: Includes variables, Css reset and Typography
  *  - Components: Buttons, inputs... Components that repeat everywhere
- *  - Blocks: Blocks that make up the page
  *  - Pages: Pages
  */
 @import "setup/all";
 @import "components/all";
-@import "blocks/all";
 @import "pages/all";

@@ -1,0 +1,38 @@
+<%- include ("../partials/header"); %>
+
+<div class="entry_page login">
+    
+    <!-- Background area -->
+    <%- include("../partials/entry_background"); %>
+
+    <style>
+        .login_area {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+    <!-- Login Area -->
+    <div class="login_area">
+
+        <form method="post" action="/login">
+            <p>
+                <label>Username:</label>
+                <input type="text" name="username">
+            </p>
+            <p>
+                <label>Password:</label>
+                <input type="text" name="password">
+            </p>
+            <p>
+                <input type="submit" value="Login">
+            </p>
+        </form>
+        
+    </div>
+
+</div>
+
+<%- include("../partials/footer"); %>
