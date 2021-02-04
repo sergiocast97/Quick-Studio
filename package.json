@@ -3,14 +3,28 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "start-watch": "nodemon ./bin/www",
+    "sass": "node-sass ./public/css/style.scss ./public/css/style.min.css --output-style compressed",
+    "sass-watch": "node-sass ./public/css/style.scss ./public/css/style.min.css --output-style compressed -w"
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "^3.1.5",
     "express": "~4.16.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.1",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "method-override": "^3.0.0",
+    "morgan": "~1.9.1",
+    "node-sass": "^5.0.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.7"
   }
 }

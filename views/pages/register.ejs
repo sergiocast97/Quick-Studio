@@ -3,7 +3,53 @@
 <div class="entry_page register">
     
     <!-- Register Area -->
-    <div class="register_area">
+    <div class="entry_panel register">
+
+        <!-- Area to go login -->
+        <div class="alternative_area">
+            <p class="message">Already have an account?</p>
+            <a class="primary_button" href="/login">Login</a>
+        </div>
+
+        <!-- Form Area -->
+        <div class="form_area">
+            
+            <h1 class="title">Register</h1>
+            
+            <form action="/register" method="POST">
+
+                <div class="input_text">
+                    <div class="input_container">
+                        <label class="input_label" for="name" >Name</label>
+                        <input id="login_name" type="text" name="name" required/>
+                    </div>
+                </div>
+
+                <div class="input_text">
+                    <div class="input_container">
+                        <label class="input_label" for="email" >Email</label>
+                        <input id="login_email" type="email" name="email" required />
+                    </div>
+                </div>
+
+                <div class="input_text">
+                    <div class="input_container">
+                        <label class="input_label" for="password">Password</label>
+                        <input id="login_password" type="password" name="password" required />
+                    </div>
+                </div>
+                
+                <!-- Register button -->
+                <button class="primary_button" type="submit">Register</button>
+
+            </form>
+        </div>
+
+        <!-- Back to Website -->
+        <div class="website_area">
+            <a class="tertiary_button" href="#">Go back to website »</a>
+        </div>
+
     </div>
 
     <!-- Background area -->

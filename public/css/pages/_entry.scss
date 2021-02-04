@@ -1,0 +1,97 @@
+.entry_page {
+
+    display: flex;
+    height: 100vh;
+
+    // Set both panels
+    & > * {
+        width: 50%;
+    }
+    
+    .entry_panel {
+
+        height: 100%;
+        padding: 64px;
+        background-color: $white;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & > * {
+            width: 100%;
+        }
+
+        .alternative_area {
+            display: flex;
+            align-items: baseline;
+
+            & > * {
+                margin-right: 24px;
+            }
+        }
+
+        .form_area {
+
+            .title {
+                margin-bottom: 32px;
+            }
+
+            form {
+
+                & > * {
+                    margin-bottom: 32px;
+                }
+            }
+        }
+    
+    }
+
+    .background {
+
+        // Set the background image
+        background-size: cover;
+        background-position: center;
+
+        .background_filter {
+    
+            // Blurry filter covering image
+            height: 100%;
+            width: 100%;
+            background: rgba($neutral-light-2, 0.1);
+            backdrop-filter: blur(5px);
+
+            padding: 64px;
+    
+            // Place the items extended and to the side
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            .logo_area {
+                
+                .logo {
+                    height: 64px;
+                    width: auto;
+                }
+            }
+
+            .message_area {
+
+                .message {
+                    font-size: $text_4xl;
+                    color: $white;
+                }
+            }
+
+            .credits_area {
+
+                .credits {
+                    font-size: $text_xs;
+                    color: $white;
+                }
+            }
+        }
+    }
+}

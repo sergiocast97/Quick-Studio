@@ -1,37 +1,55 @@
 <%- include ("../partials/header"); %>
 
 <div class="entry_page login">
-    
+
+    <!-- Login Area -->
+    <div class="entry_panel login">
+
+      <!-- Area to go register -->
+      <div class="alternative_area">
+        <p class="message">Don't have an account yet?</p>
+        <a class="primary_button" href="/register">Register</a>
+      </div>
+
+      <!-- Form Area -->
+      <div class="form_area">
+        <h1 class="title">Login</h1>
+
+        <form action="/login" method="POST">
+
+          <div class="input_text">
+            <div class="input_container">
+                <label class="input_label" for="email" >Email</label>
+                <input id="login_email" type="email" name="email" required />
+            </div>
+          </div>
+
+          <div class="input_text">
+            <div class="input_container">
+                <label class="input_label" for="password">Password</label>
+                <input id="login_password" type="password" name="password" required />
+            </div>
+          </div>
+          
+          <button class="primary_button" type="submit">Login</button>
+        
+        </form>
+
+        <% if (messages.error) { %>
+          <%= messages.error %>
+        <% } %>
+
+      </div>
+      
+      <!-- Back to Website -->
+      <div class="website_area">
+        <a class="tertiary_button" href="#">Go back to website »</a>
+      </div>
+            
+    </div>
+
     <!-- Background area -->
     <%- include("../partials/entry_background"); %>
-
-    <style>
-        .login_area {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-    </style>
-    <!-- Login Area -->
-    <div class="login_area">
-
-        <form method="post" action="/login">
-            <p>
-                <label>Username:</label>
-                <input type="text" name="username">
-            </p>
-            <p>
-                <label>Password:</label>
-                <input type="text" name="password">
-            </p>
-            <p>
-                <input type="submit" value="Login">
-            </p>
-        </form>
-        
-    </div>
 
 </div>
 
