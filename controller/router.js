@@ -6,14 +6,14 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // Using a temporary DB
-const users = [];
+const users = []
 
 // Requiring necessary modules
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
-const passport = require('passport');
-const initializePassport = require('./passport-config')
+const passport = require('passport')
+const initializePassport = require('./authenticator')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
@@ -31,7 +31,7 @@ initializePassport(
 router.use(express.urlencoded({ extended: false }))
 
 // Using flash
-router.use(flash());
+router.use(flash())
 
 // Using sessions
 router.use(session({
@@ -72,7 +72,7 @@ function checkNotAuthenticated(req, res, next) {
 
 // Test
 router.get('/test', function (req, res) {
-  res.render('pages/test', { title: 'Test Page' });
+  res.render('pages/test', { title: 'Test Page' })
 })
 
 // Login
@@ -90,7 +90,7 @@ router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 // Register
 
 router.get('/register', checkNotAuthenticated, (req, res) => {
-res.render('pages/register', { title: 'Register' });
+res.render('pages/register', { title: 'Register' })
 })
 
 router.post('/register', checkNotAuthenticated, async (req, res) => {
@@ -106,10 +106,10 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
       })
       console.log("\nUser created\n")
       // Redirect the user to the login page
-      res.redirect('/login');
+      res.redirect('/login')
   } catch {
-      console.log("\nThere has been an issue\n");
-      res.redirect('/register');
+      console.log("\nThere has been an issue\n")
+      res.redirect('/register')
   }
 })
 
@@ -126,4 +126,4 @@ router.delete('/logout', (req, res) => {
   res.redirect('/login')
 })
 
-module.exports = router;
+module.exports = router
