@@ -78,10 +78,9 @@ router.get('/test', function (req, res) {
 // Login
 
 router.get('/login', checkNotAuthenticated, (req, res) => {
-  res.render('pages/login')
+  res.render('pages/login', { title: 'Sign In' })
 })
-
-router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+.post('/login', checkNotAuthenticated, passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',
   failureFlash: true
@@ -92,8 +91,7 @@ router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 router.get('/register', checkNotAuthenticated, (req, res) => {
 res.render('pages/register', { title: 'Register' })
 })
-
-router.post('/register', checkNotAuthenticated, async (req, res) => {
+.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
       // Try to generate a hashed password
       const hashedPassword = await bcrypt.hash(req.body.password, 10)
@@ -116,7 +114,7 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
 // Main Page
 
 router.get('/', checkAuthenticated, (req, res) => {
-  res.render('pages/index', { name: req.user.name })
+  res.render('pages/index', { title: "Quick Studio", name: req.user.name })
 })
 
 // Logout

@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title</title>
+    <title><%- title %></title>
+
+    <!-- Favicon -->
+    <%- include('components/favicon') %>
+
+    <!-- Styling-->
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 <body>
+    <header>
+
+        <!-- Loading Screen -->
+        <%- include('components/loading_screen') %>
+
+        <!-- Custom Cursor -->
+        <div class="cursor"></div>
+        
+    </header>
     
     <%- body %>
 

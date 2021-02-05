@@ -13,9 +13,10 @@
     outline: none;
     background-color: $primary;
     border: 1px solid $primary-dark-1;
-    color: $primary-dark-3;
+    color: $primary-dark-2;
     border-radius: 2px;
 
+    text-align: center;
     font-size: $text-l;
     font-weight: $text-bold;
     white-space: nowrap;
@@ -45,3 +46,83 @@
     }
     
 }
+
+/**
+ * Secondary Button
+ * /
+ .secondary_button {
+ 
+    box-sizing: border-box;
+    display: inline-block;
+    height: auto;
+    width: auto;
+    min-width: 100px;
+    padding: 5px 10px;
+    
+    border: solid 2px $avionexus-primary-dark-2;
+    border-radius: $soft-border;
+    outline: none;
+    background-color: transparent;
+
+    color: $avionexus-primary-dark-2;
+    font-size: $text-s;
+    font-weight: $text-semi;
+    white-space: nowrap;
+    
+    cursor: pointer;
+    transition: 0.25s;
+
+    &:hover {
+
+        border-color: $avionexus-primary-dark-3;
+        color: $avionexus-primary-dark-3;
+    }
+
+    &:focus {
+
+        border-color: $avionexus-primary-dark-1;
+        color: $avionexus-primary-dark-1;
+    }
+
+    &:active {
+
+        border-color: $avionexus-primary;
+        color: $avionexus-primary;
+    }
+}
+
+/**
+ * Tertiary Button
+ * /
+.tertiary_button {
+    
+    border: none;
+    outline: none;
+    cursor: pointer;
+    height: auto;
+    background-color: transparent;
+    text-decoration: underline;
+    white-space: nowrap;
+
+    color: $avionexus-primary-dark-1;
+    font-size: $text-s;
+    font-weight: $text-semi;
+    white-space: nowrap;
+
+    transition: 0.25s;
+
+    &:hover {
+        
+        color: $avionexus-primary-dark-2;
+    }
+
+    &:focus {
+        
+        color: $avionexus-primary;
+    }
+
+    &:active {
+        
+        color: $avionexus-primary-light-1;
+    }
+}*/

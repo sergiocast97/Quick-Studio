@@ -9,6 +9,7 @@
     border-radius: 100%;
     box-sizing: border-box;
     position: absolute;
+    overflow: hidden;
 
     background-color: $primary;
     border: 1px solid $primary-dark-1;
@@ -17,6 +18,10 @@
     transition-timing-function: ease-out;
     animation: cursor_animation 1s infinite alternate;
     pointer-events: none;
+
+    @media( max-width: $breakpoint-tablet) {
+        display: none;
+    }
 }
 
 // Cursor animation (Breathing)

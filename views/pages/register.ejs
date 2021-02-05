@@ -1,5 +1,3 @@
-<%- include ("../partials/header"); %>
-
 <div class="entry_page register">
     
     <!-- Register Area -->
@@ -8,13 +6,13 @@
         <!-- Area to go login -->
         <div class="alternative_area">
             <p class="message">Already have an account?</p>
-            <a class="primary_button" href="/login">Login</a>
+            <a class="primary_button" href="/login">Sign In</a>
         </div>
 
         <!-- Form Area -->
         <div class="form_area">
             
-            <h1 class="title">Register</h1>
+            <h1 class="title"><%- title %></h1>
             
             <form action="/register" method="POST">
 
@@ -53,8 +51,6 @@
     </div>
 
     <!-- Background area -->
-    <%- include("../partials/entry_background"); %>
+    <%- include("../components/entry_background", { headline: "Just get it<br>recorded"}); %>
 
 </div>
-
-<%- include("../partials/footer"); %>
