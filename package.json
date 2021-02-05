@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start-old": "node ./bin/www",
     "start-watch": "nodemon ./bin/www",
+    "start": "node server.js",
     "sass": "node-sass ./public/css/style.scss ./public/css/style.min.css --output-style compressed",
     "sass-watch": "node-sass ./public/css/style.scss ./public/css/style.min.css --output-style compressed -w"
   },
@@ -14,10 +15,12 @@
     "debug": "~2.6.9",
     "ejs": "^3.1.5",
     "express": "~4.16.1",
+    "express-ejs-layouts": "^2.5.0",
     "express-flash": "0.0.2",
     "express-session": "^1.17.1",
     "http-errors": "~1.6.3",
     "method-override": "^3.0.0",
+    "mongoose": "^5.11.15",
     "morgan": "~1.9.1",
     "node-sass": "^5.0.0",
     "passport": "^0.4.1",
