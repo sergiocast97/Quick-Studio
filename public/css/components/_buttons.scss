@@ -17,7 +17,7 @@
     border-radius: 2px;
 
     text-align: center;
-    font-size: $text-l;
+    font-size: $text-m;
     font-weight: $text-bold;
     white-space: nowrap;
     
@@ -49,51 +49,36 @@
 
 /**
  * Secondary Button
- * /
- .secondary_button {
+ */
+.secondary_button {
  
     box-sizing: border-box;
     display: inline-block;
     height: auto;
     width: auto;
-    min-width: 100px;
-    padding: 5px 10px;
-    
-    border: solid 2px $avionexus-primary-dark-2;
-    border-radius: $soft-border;
+    padding: 0;
+    border: none;
     outline: none;
     background-color: transparent;
 
-    color: $avionexus-primary-dark-2;
-    font-size: $text-s;
-    font-weight: $text-semi;
+    color: $secondary-dark-1;
+    font-size: $text-m;
+    font-weight: $text-regular;
     white-space: nowrap;
     
     cursor: pointer;
     transition: 0.25s;
 
-    &:hover {
+    &:hover { color: $secondary; }
 
-        border-color: $avionexus-primary-dark-3;
-        color: $avionexus-primary-dark-3;
-    }
+    &:focus { color: $secondary; }
 
-    &:focus {
-
-        border-color: $avionexus-primary-dark-1;
-        color: $avionexus-primary-dark-1;
-    }
-
-    &:active {
-
-        border-color: $avionexus-primary;
-        color: $avionexus-primary;
-    }
+    &:active { color: $secondary-light-1; }
 }
 
 /**
  * Tertiary Button
- * /
+ */
 .tertiary_button {
     
     border: none;
@@ -104,25 +89,16 @@
     text-decoration: underline;
     white-space: nowrap;
 
-    color: $avionexus-primary-dark-1;
+    color: $primary-dark-1;
     font-size: $text-s;
-    font-weight: $text-semi;
+    font-weight: $text-regular;
     white-space: nowrap;
 
     transition: 0.25s;
 
-    &:hover {
-        
-        color: $avionexus-primary-dark-2;
-    }
+    &:hover { color: $primary; }
 
-    &:focus {
-        
-        color: $avionexus-primary;
-    }
+    &:focus { color: $primary-dark-2; }
 
-    &:active {
-        
-        color: $avionexus-primary-light-1;
-    }
-}*/
+    &:active { color: $primary-light-1; }
+}

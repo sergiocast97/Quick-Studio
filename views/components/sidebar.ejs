@@ -1,19 +1,66 @@
-<style>
-    .sidebar {
-        width: 128px;
-        height: 100%;
-        background-color: aqua;
-    }
-</style>
 <div class="sidebar">
+    <div class="floating_sidebar">
+        <div class="logo_area">
+            <img class="logo" src="img/icons/logo_light.svg"> 
+        </div>
+    
+        <div class="main_area">
 
-    <div class="logo_area"></div>
+            <!-- Main Navigation -->
+            <div class="main_navigation">
 
-    <div class="main_area">
-        <div class="main_navigation"></div>
-        <div class="shortcuts"></div>
+                <!-- Navigation Item -->
+                <a class="nav_item" href="/">
+                    <div class="nav_item_icon">
+                        <img src="img/icons/navigation/projects.svg">
+                    </div>
+                    <div class="nav_item_name">Projects</div>
+                </a>
+
+                <!-- Navigation Item -->
+                <a class="nav_item" href="/bandmates">
+                    <div class="nav_item_icon">
+                        <img src="img/icons/navigation/bandmates.svg">
+                    </div>
+                    <div class="nav_item_name">Bandmates</div>
+                </a>
+
+                <!-- Navigation Item -->
+                <a class="nav_item" href="/settings">
+                    <div class="nav_item_icon">
+                        <img src="img/icons/navigation/settings.svg">
+                    </div>
+                    <div class="nav_item_name">Settings</div>
+                </a>
+
+                <!-- Navigation Item -->
+                <a class="nav_item" href="/dashboard">
+                    <div class="nav_item_icon">
+                        <img src="img/icons/navigation/dashboard.svg">
+                    </div>
+                    <div class="nav_item_name">Dashboard</div>
+                </a>
+
+            </div>
+
+            <div class="shortcuts"></div>
+
+            <style>
+                .logout {
+                    padding: 24px;
+                }
+            </style>
+            <form action="/logout?_method=DELETE" method="POST" class="logout">
+                <button class="primary_button" type="submit">Log Out</button>
+            </form>
+
+        </div>
+    
+        <div class="user_area">
+            <div class="user">
+                <img class="user_picture" src="img/user.jpg" alt="profile_picture">
+                <div class="user_name"><%= logged_user %></div>
+            </div>
+        </div>
     </div>
-
-    <div class="user_area"></div>
-
 </div>

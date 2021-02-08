@@ -1,0 +1,51 @@
+.dropdown {
+
+    min-width: 200px;
+    border-radius: $border;
+    outline: none;
+    padding: 8px 16px;
+    padding-right: 30px;
+    appearance: none;
+    
+    border: solid 2px $neutral-light-2;
+    background-color:  $neutral-light-3;
+    color: $neutral-dark-3;
+    font-size: $text-m;
+    font-weight: $text-regular;
+
+    background:url('../img/icons/down_arrow.svg');
+	background-repeat: no-repeat;
+	background-size: 8px 8px;
+    background-position: 95% 50%;
+
+    transition: 0.25s;
+    
+    &:hover {
+
+        border-color: $neutral-light-2;
+        background-color: $primary-light-3;
+        color: $neutral-dark-3;
+    }
+
+    &:active {
+
+        border-color: $primary;
+        background-color: $primary-light-3;
+        color: $neutral-dark-2;
+    }
+
+    &:focus {
+
+        border-color: $primary;
+        background-color: $primary-light-3;
+        color: $neutral-dark-2;
+    }
+
+    option {
+
+        border: solid 2px $neutral-dark-2;
+        border-radius: $border;
+        margin-top: 5px;
+        background: $white;
+    }
+}

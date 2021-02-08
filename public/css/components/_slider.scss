@@ -1,0 +1,138 @@
+.slider {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    label {
+
+        font-size: $text-m;
+        font-weight: $text-regular;
+        color: $neutral-dark-3;
+    }
+
+
+    // Slider related variables to keep it alive
+    $slider-width-number: 350;
+    $slider-width: #{$slider-width-number}px;
+    $slider-height: 16px;
+    $thumb-width: 20px;
+    $thumb-height: 20px;
+    $shadow-size: -2px;
+    $fit-thumb-in-slider: -2px;
+
+    // Function to generate the "unfilled" track on Chrome
+    @function makelongshadow($color, $size) {
+
+        $val: 5px 0 0 $size $color;
+
+        @for $i from 6 through $slider-width-number {
+            $val: #{$val}, #{$i}px 0 0 $size #{$color};
+        }
+
+        @return $val;
+    }
+
+    // General Input selector (Chrome)
+    input[type=range] {
+
+        //align-self: center;
+        background: none;
+        appearance: none;
+        overflow: hidden;
+        cursor: pointer;
+
+        //width: $slider-width;
+        height: 100%;
+        min-height: 50px;
+
+        display: flex;
+        align-items: center;
+
+        &:focus {
+
+            box-shadow: none;
+            outline: none;
+        }
+
+        // Filled track (Chrome)
+        &::-webkit-slider-runnable-track {
+
+            border-radius: $border;
+            background: $primary;
+            content: '';
+            height: $slider-height;
+            pointer-events: none;
+        }
+
+        // Thumb (Chrome)
+        &::-webkit-slider-thumb {
+
+            width: $thumb-width;
+            height: $thumb-height;
+            
+            appearance: none;
+            background: $white;
+            border: 1px solid $neutral-light-1;
+            border-radius: $border;
+            margin-top: $fit-thumb-in-slider;
+
+            // Unfilled track
+            box-shadow: makelongshadow($neutral-light-2, $shadow-size);
+
+            &:hover { background: $primary-light-3; border-radius: $border; }
+
+            &:focus, &:active  { background: $neutral-light-3; }
+        }
+
+
+        // Track (Firefox)
+        &::-moz-range-track {
+
+            background: $neutral-light-2;
+            border-radius: $border;
+            width: $slider-width;
+            height: $slider-height;
+        }
+
+        // Thumb (Firefox)
+        &::-moz-range-thumb {
+
+            width: $thumb-width;
+            height: $thumb-height;
+
+            background: $white;
+            border: 1px solid $neutral-light-1;
+            border-radius: $border;
+            position: relative;
+
+            &:hover { background: $primary-light-3; border-radius: $border; }
+
+            &:focus, &:active  { background: $neutral-light-3; }
+        }
+
+        // Filled Track (Firefox)
+        &::-moz-range-progress {
+
+            border-radius: $border;
+            height: $slider-height;
+            background: $primary;
+            border: 0;
+            margin-top: 0;
+        }
+    }
+
+    .slider_options {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+
+        .single_option {
+
+            color: $neutral-dark-3;
+            font-size: $text-xs;
+            font-weight: $text-regular;
+        }
+    }
+}

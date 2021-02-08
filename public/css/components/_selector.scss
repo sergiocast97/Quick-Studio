@@ -1,0 +1,126 @@
+.selector {
+
+    position: relative;
+    display: block;
+
+    label {
+        
+        font-size: $text-l;
+        font-weight: $text-regular;
+        color: $neutral-dark-3;
+    }
+
+    // Variables
+    $checkbox-width: 18px;
+    
+    // Checkboxes
+    input[type="checkbox"], input[type="radio"] {
+
+        position: absolute;
+        left: 0;
+        display: none;
+
+        & + label {
+
+            position: relative;
+            display: inline-block;
+            padding: 5px 10px 10px 40px;
+            cursor: pointer;
+
+            // Default State
+            &:before {
+
+                display: block;
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transition: 0.25s;
+
+                margin: -15px 0 0;
+                width: 25px;
+                height: 25px;
+
+                // Soft border on the square checkbox
+                border-radius: $border;
+
+                // Grey border
+                border: 2px solid $neutral-light-1;
+                // White space between border and background
+                box-shadow: inset 0px 0px 0px 3px $neutral-light-3;
+                // White Background
+                background-color: $neutral-light-3;
+                
+
+            }
+
+            &:hover {
+
+                &:before {
+                    // When hovering, the background goes grey
+                    background-color: $neutral-light-2;
+                }
+            }
+
+            &:active {
+
+                &:before {
+                    // When clicked, the background goes green
+                    background-color: $primary-dark-1;
+                }
+            }
+        }
+
+        // Checked State
+        &:checked + label {
+
+            &:before {
+                // When hovering, the background goes grey
+                background-color: $primary;
+            }
+
+            &:active {
+
+                &:before {
+                    // When clicked, the background goes green
+                    background-color: $primary-dark-1;
+                }
+            }
+        }
+
+        // Disabled State
+        &:disabled {
+            
+            & + label {
+
+                cursor: not-allowed;
+
+                &:before {
+                    background-position: (-$checkbox-width*2) 0;
+                }
+            }
+
+            // Disabled Checked
+            &:checked + label {
+
+                &:before {
+
+                    background-position: (-$checkbox-width*3) 0;
+                }
+            }
+        }
+    }
+
+    // Radio Buttons
+    input[type="radio"] {
+
+        & + label {
+
+            &:before {
+
+                // Radio Button is completely round
+                border-radius: 100%;
+            }
+        }
+    }
+}

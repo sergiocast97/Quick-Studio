@@ -1,0 +1,54 @@
+.project_item {
+
+    background-color: $neutral-light-3;
+    border-radius: $border;    
+    display: flex;
+
+    .item_header {
+
+        border-top: 1px solid $neutral-light-2;
+        border-left: 1px solid $neutral-light-2;
+        border-bottom: 1px solid $neutral-light-2;
+
+        background-color: $primary-light-2;
+        padding: 12px;
+        border-radius: $border 0 0 $border;
+
+        .project_icon {
+            
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .item_body {
+
+        border-top: 1px solid $neutral-light-2;
+        border-right: 1px solid $neutral-light-2;
+        border-bottom: 1px solid $neutral-light-2;
+
+        width: 100%;
+        padding: 16px 24px;
+        border-radius: 0 $border $border 0;
+
+        .project_info {
+
+            .project_name {
+
+                font-weight: $text-bold;
+                font-size: $text-s;
+                color: $primary-dark-2
+            }
+
+            .project_details {
+
+                & > * {
+
+                    font-weight: $text-regular;
+                    font-size: $text-xs;
+                    color: $neutral-dark-1;
+                }
+            }
+        }
+    }
+}

@@ -1,3 +1,26 @@
+<% projects = [ "Breakdown test 01", "test 01", "test_02", "test_03" ] %>
+
+<div class="index_page">
+
+    <!-- Sidenav -->
+    <%- include('../components/sidebar', { logged_user: name }) %>
+
+    <div class="page">
+
+        <!-- Top Bar -->
+        <%- include('../components/topbar', { page_title: "Projects" }) %>
+
+        <!-- Main Area -->
+        <div class="main">
+            <div class="project_items">
+                <% for(project of projects){ %>
+                    <%- include('../components/project_item', { project_name: project }) %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
 
     .index_page {
@@ -12,36 +35,4 @@
         flex-direction: column;
     }
 
-
-    .main {
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
 </style>
-
-<div class="index_page">
-
-    <!-- Sidenav -->
-    <%- include('../components/sidebar') %>
-
-    <div class="page">
-
-        <!-- Top Bar -->
-        <%- include('../components/topbar') %>
-
-        <!-- Main Area -->
-        <div class="main">
-
-            <h1>Hello <%= name %>!</h1>
-
-            <form action="/logout?_method=DELETE" method="POST">
-                <button class="primary_button" type="submit">Log Out</button>
-            </form>
-        </div>
-
-    </div>
-    
-</div>
