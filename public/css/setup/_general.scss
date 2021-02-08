@@ -22,3 +22,32 @@ img {
     background-color: $primary;
     color: $black;
 }
+
+// Unavailable on Mobile
+@media( max-width: $breakpoint-tablet) {
+
+    body { display: none }
+
+    html {
+
+        background-color: $primary-light-2;
+        
+        &::after {
+
+            content: "Only available on Desktop";
+
+            background : url('../img/icons/logo_light.svg') no-repeat;
+            background-size: auto 32px;
+            background-position: 50% 40%;
+
+            font-size: $text-2xl;
+            font-weight: $text-regular;
+            color: $neutral-dark-3;
+
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
