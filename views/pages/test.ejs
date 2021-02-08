@@ -3,104 +3,117 @@
     .test_area section > * { margin: 48px; max-width: 25%; }
 </style>
 
-<div class="test_area">
+<div class="index_page">
 
-    <!-- Text -->
-    <section>
-        <!-- Headers -->
-        <div class="Headers">
-            <h1>Heading 1</h1>
-            <h2>Heading 2</h2>
-            <h3>Heading 3</h3>
-            <h4>Heading 4</h4>
-            <h5>Heading 5</h5>
-        </div>
-        <div class="headers">
-            <p>Paragraph text</p>
-            <a href='index.html'>Anchor tag</a>
-            <ul>
-                <li>Hello</li>
-                <li>Hello</li>
-                <li>Hello</li>
-            </ul>
-        </div>
-    </section>
+    <!-- Sidenav -->
+    <%- include('../components/sidebar', { logged_user: name }) %>
 
-    <!-- Text Input -->
-    <section>
-        <!-- Text Area -->
-        <div class="input_text">
-            <div class="input_container">
-                <label class="input_label" for="exampleTextarea">Example textarea</label>
-                <textarea id="exampleTextarea" ></textarea>
-            </div>
-        </div>
-        <!-- Textbox -->
-        <div class="input_text">
-            <div class="input_container">
-                <label class="input_label" for="login_email" >Example textbox</label>
-                <input id="login_email" type="email" />
-            </div>
-        </div>
-        <!--Textbox Wrong -->
-        <div class="input_text wrong">
-            <div class="input_container">
-                <label class="input_label" for="login_password">Example wrong textbox</label>
-                <input id="login_password" type="password" />
-            </div>
-        </div>
-    </section>
+    <div class="page">
 
-    <!-- Button -->
-    <section>
-        <!-- Primary Button -->
-        <div class="primary_button">Primary Button</div>
-        <!-- Secondary Button -->
-        <div class="secondary_button">Secondary Button</div>
-        <!-- Tertiary Button -->
-        <div class="tertiary_button">Tertiary Button</div>
-    </section>
+        <!-- Top Bar -->
+        <%- include('../components/topbar', { page_title: "Projects" }) %>
 
-    <!-- Other inputs -->
-    <section>
-        <!-- Dropdown -->
-        <select class="dropdown" name="dropdown_test">
-            <option value="">I am a dropdown</option>
-            <option value="">Option 1</option>
-            <option value="">Option 2</option>
-            <option value="">Option 3</option>
-            <option value="">Option 4</option>
-            <option value="">Option 5</option>
-            <option value="">Option 6</option>
-        </select>
-        <!-- Checkbox -->
-        <div>
-            <div class="selector">
-                <input type="checkbox" id="checkbox_example" name="checkbox_example">
-                <label for="checkbox_example">Checkbox Example</label>
-            </div>
-        </div>         
-        <!-- Radio Button -->    
-        <div>          
-            <div class="selector">
-                <input type="radio" id="radio_example_1" name="radio_example">
-                <label for="radio_example_1">Radio Button Example</label>
-            </div>
-            <div class="selector">
-                <input type="radio" id="radio_example_2" name="radio_example">
-                <label for="radio_example_2">Radio Button Example 2</label>
-            </div>
-        </div>
-        <!-- Slider -->
-        <div class="slider">
-            <label for="slider_example">Slider example</label>
-            <input type="range" id="slider_example" name="slider_example" min="1" max="3" step="1">
-            <div class="slider_options">
-                <div class="single_option">Option 1</div>
-                <div class="single_option">Option 2</div>
-                <div class="single_option">Option 3</div>
-            </div>
-        </div>
-    </section>
+        <!-- Test Area -->
+        <div class="test_area">
 
+            <!-- Text Input -->
+            <section>
+                <!-- Text Area -->
+                <div class="input_text">
+                    <div class="input_container">
+                        <label class="input_label" for="exampleTextarea">Example textarea</label>
+                        <textarea id="exampleTextarea" ></textarea>
+                    </div>
+                </div>
+                <!-- Textbox -->
+                <div class="input_text">
+                    <div class="input_container">
+                        <label class="input_label" for="login_email" >Example textbox</label>
+                        <input id="login_email" type="email" />
+                    </div>
+                </div>
+                <!--Textbox Wrong -->
+                <div class="input_text wrong">
+                    <div class="input_container">
+                        <label class="input_label" for="login_password">Example wrong textbox</label>
+                        <input id="login_password" type="password" />
+                    </div>
+                </div>
+            </section>
+
+            <!-- Button -->
+            <section>
+                <!-- Primary Button -->
+                <div class="primary_button">Primary Button</div>
+                <!-- Secondary Button -->
+                <div class="secondary_button">Secondary Button</div>
+                <!-- Tertiary Button -->
+                <div class="tertiary_button">Tertiary Button</div>
+            </section>
+
+            <!-- Other inputs -->
+            <section>
+                <!-- Dropdown -->
+                <select class="dropdown" name="dropdown_test">
+                    <option value="">I am a dropdown</option>
+                    <option value="">Option 1</option>
+                    <option value="">Option 2</option>
+                    <option value="">Option 3</option>
+                    <option value="">Option 4</option>
+                    <option value="">Option 5</option>
+                    <option value="">Option 6</option>
+                </select>
+                <!-- Checkbox -->
+                <div>
+                    <div class="selector">
+                        <input type="checkbox" id="checkbox_example" name="checkbox_example">
+                        <label for="checkbox_example">Checkbox Example</label>
+                    </div>
+                </div>         
+                <!-- Radio Button -->    
+                <div>          
+                    <div class="selector">
+                        <input type="radio" id="radio_example_1" name="radio_example">
+                        <label for="radio_example_1">Radio Button Example</label>
+                    </div>
+                    <div class="selector">
+                        <input type="radio" id="radio_example_2" name="radio_example">
+                        <label for="radio_example_2">Radio Button Example 2</label>
+                    </div>
+                </div>
+                <!-- Slider -->
+                <div class="slider">
+                    <label for="slider_example">Slider example</label>
+                    <input type="range" id="slider_example" name="slider_example" min="1" max="3" step="1">
+                    <div class="slider_options">
+                        <div class="single_option">Option 1</div>
+                        <div class="single_option">Option 2</div>
+                        <div class="single_option">Option 3</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Text -->
+            <section>
+                <!-- Headers -->
+                <div class="Headers">
+                    <h1>Heading 1</h1>
+                    <h2>Heading 2</h2>
+                    <h3>Heading 3</h3>
+                    <h4>Heading 4</h4>
+                    <h5>Heading 5</h5>
+                </div>
+                <div class="headers">
+                    <p>Paragraph text</p>
+                    <a href='index.html'>Anchor tag</a>
+                    <ul>
+                        <li>Hello</li>
+                        <li>Hello</li>
+                        <li>Hello</li>
+                    </ul>
+                </div>
+            </section>
+            
+        </div>
+    </div>
 </div>

@@ -1,5 +1,3 @@
-<% projects = [ "Breakdown test 01", "test 01", "test_02", "test_03" ] %>
-
 <div class="index_page">
 
     <!-- Sidenav -->
@@ -13,26 +11,10 @@
         <!-- Main Area -->
         <div class="main">
             <div class="project_items">
-                <% for(project of projects){ %>
+                <% for(project of project_list){ %>
                     <%- include('../components/project_item', { project_name: project }) %>
                 <% } %>
             </div>
         </div>
     </div>
 </div>
-
-<style>
-
-    .index_page {
-        height: 100vh;
-        display: flex;
-    }
-
-    .page {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-</style>

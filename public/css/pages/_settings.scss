@@ -1,0 +1,52 @@
+.settings_area {
+
+    .settings_header {
+
+        display: flex;
+
+        .user_picture {
+
+            margin-right: 32px;
+            
+            img {
+
+                width: 128px;
+                height: 128px;
+                object-fit: cover;
+
+                border-radius: 100%;
+            }
+        }
+
+        .user_details {
+
+            display: flex;
+            flex-direction: column;
+
+            .full_name {
+
+                font-size: $text-3xl;
+                font-weight: $text-bold;
+                color: $neutral-dark-3;
+            }
+
+            .location {
+
+                font-size: $text-xl;
+                font-weight: $text-regular;
+                color: $neutral-dark-2;
+            }
+        }
+    }
+
+    .user_settings {
+
+        margin-top: 64px;
+        padding-right: 64px;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-flow: row dense;
+        gap: 64px 48px;
+    }
+}

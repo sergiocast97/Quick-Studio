@@ -1,0 +1,20 @@
+<div class="index_page">
+
+    <!-- Sidenav -->
+    <%- include('../components/sidebar', { logged_user: name }) %>
+
+    <div class="page">
+
+        <!-- Top Bar -->
+        <%- include('../components/topbar', { page_title: "Bandmates" }) %>
+
+        <!-- Main Area -->
+        <div class="bandmates_area">
+            <div class="bandmates">
+                <% for(bandmate of bandmate_list){ %>
+                    <%- include('../components/bandmate_item', { bandmate: bandmate }) %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>

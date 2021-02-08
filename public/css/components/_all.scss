@@ -1,15 +1,6 @@
 /**
  * Simple HTML components
  */
- 
-@import "buttons";
-@import "loading";
-@import "cursor";
-@import "scrollbar";
-@import "input";
-@import "dropdown";
-@import "selector";
-@import "slider";
-@import "sidebar";
-@import "topbar";
-@import "project_item"
+
+@import "basic/all";
+@import "complex/all";

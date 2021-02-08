@@ -1,0 +1,75 @@
+<div class="index_page">
+
+    <!-- Sidenav -->
+    <%- include('../components/sidebar', { logged_user: name }) %>
+
+    <div class="page">
+
+        <!-- Top Bar -->
+        <%- include('../components/topbar', { page_title: "Settings" }) %>
+
+        <!-- Main Area -->
+        <div class="main">
+        
+            <div class="settings_area">
+
+                <div class="settings_header">
+                    <div class="user_picture">
+                        <img src="img/icons/placeholders/user.jpg">
+                    </div>
+                    <div class="user_details">
+                        <div class="full_name"><%- name %></div>
+                        <div class="location">Location</div>
+                    </div>
+                </div>
+
+                <div class="user_settings">
+
+                    <div class="input_text">
+                        <div class="input_container">
+                            <label class="input_label" for="name" >Name</label>
+                            <input id="login_name" type="text" name="name" required/>
+                        </div>
+                    </div>
+
+                    <div class="input_text">
+                        <div class="input_container">
+                            <label class="input_label" for="surname" >Surname</label>
+                            <input id="login_name" type="text" name="surname" required/>
+                        </div>
+                    </div>
+
+                    <div class="input_text">
+                        <div class="input_container">
+                            <label class="input_label" for="email" >Email</label>
+                            <input id="login_name" type="text" name="email" required/>
+                        </div>
+                    </div>
+
+                    <div class="input_text">
+                        <div class="input_container">
+                            <label class="input_label" for="username" >Username</label>
+                            <input id="login_name" type="text" name="username" required/>
+                        </div>
+                    </div>
+
+                    <div class="input_text">
+                        <div class="input_container">
+                            <label class="input_label" for="location" >Location</label>
+                            <input id="login_name" type="text" name="location" required/>
+                        </div>
+                    </div>
+
+                    <div class="input_text">
+                        <div class="input_container">
+                            <label class="input_label" for="password" >Password</label>
+                            <input id="login_name" type="text" name="password" required/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</div>

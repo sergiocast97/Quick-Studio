@@ -59,6 +59,8 @@
                     color: $neutral-dark-2;
                     display: flex;
 
+                    transition: 0.25s;
+
                     &:hover {
 
                         border-top: 1px solid $neutral-light-1;
@@ -104,6 +106,8 @@
 
                     width: 32px;
                     height: 32px;
+                    object-fit: cover;
+                    
                     border-radius: 100%;
                     margin-right: 8px;
                 }

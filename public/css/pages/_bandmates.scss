@@ -1,0 +1,14 @@
+.bandmates_area {
+    
+    padding: 48px;
+    height: 100%;
+    
+    .bandmates {
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-flow: row dense;
+        gap: 48px 48px;
+    }
+
+}

@@ -72,7 +72,7 @@ function checkNotAuthenticated(req, res, next) {
 
 // Test
 router.get('/test', function (req, res) {
-  res.render('pages/test', { title: 'Test Page' })
+  res.render('pages/test', { title: 'Test Page', name: "Test Area" })
 })
 
 // Login
@@ -114,7 +114,17 @@ res.render('pages/register', { title: 'Register' })
 // Main Page
 
 router.get('/', checkAuthenticated, (req, res) => {
-  res.render('pages/index', { title: "Quick Studio", name: req.user.name })
+  let project_list = ["Breakdown test 01", "Test 01", "Test 02", "Test 03"]
+  res.render('pages/index', { title: "Projects", name: req.user.name, project_list: project_list })
+})
+
+router.get('/settings', checkAuthenticated, (req, res) => {
+  res.render('pages/settings', { title: "Settings", name: req.user.name })
+})
+
+router.get('/bandmates', checkAuthenticated, (req, res) => {
+  let bandmate_list = ["Cristiana", "Conrado", "Nate", "Tobin", "Masha"]
+  res.render('pages/bandmates', { title: "Bandmates", name: req.user.name, bandmate_list: bandmate_list })
 })
 
 // Logout
