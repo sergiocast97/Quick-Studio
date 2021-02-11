@@ -16,29 +16,55 @@
             
             <form action="/register" method="POST">
 
+                <!-- Username -->
                 <div class="input_text">
                     <div class="input_container">
-                        <label class="input_label" for="name" >Name</label>
-                        <input id="login_name" type="text" name="name" required/>
+                        <label class="input_label" for="username" >Username</label>
+                        <input id="register_username" type="text" name="username" value="<%= user.username %>" required/>
                     </div>
                 </div>
 
+                <!-- Email -->
                 <div class="input_text">
                     <div class="input_container">
                         <label class="input_label" for="email" >Email</label>
-                        <input id="login_email" type="email" name="email" required />
+                        <input id="register_email" type="email" name="email" value="<%= user.email %>" required />
                     </div>
                 </div>
 
+                <div class="split">                
+                    <!-- Name -->
+                    <div class="input_text">
+                        <div class="input_container">
+                            <label class="input_label" for="name" >Name</label>
+                            <input id="register_name" type="text" name="name" value="<%= user.name %>" required/>
+                        </div>
+                    </div>
+
+                    <!-- Surname -->
+                    <div class="input_text">
+                        <div class="input_container">
+                            <label class="input_label" for="surname" >Surname</label>
+                            <input id="register_surname" type="text" name="surname" value="<%= user.surname %>" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password -->
                 <div class="input_text">
                     <div class="input_container">
                         <label class="input_label" for="password">Password</label>
-                        <input id="login_password" type="password" name="password" required />
+                        <input id="register_password" type="password" name="password" value="<%= user.password %>" required />
                     </div>
                 </div>
                 
                 <!-- Register button -->
                 <button class="primary_button" type="submit">Register</button>
+
+                <!-- Error Message -->
+                <% if (locals.errorMessage != null) { %>
+                    <%= errorMessage %>
+                <% } %>
 
             </form>
         </div>

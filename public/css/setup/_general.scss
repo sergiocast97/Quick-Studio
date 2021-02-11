@@ -34,11 +34,13 @@ img {
         
         &::after {
 
-            content: "Only available on Desktop";
-
+            // Show a logo
             background : url('../img/icons/logo_light.svg') no-repeat;
             background-size: auto 32px;
             background-position: 50% 40%;
+
+            // Show the message 
+            content: "Only available on Desktop";
 
             font-size: $text-2xl;
             font-weight: $text-regular;
