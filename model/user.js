@@ -1,6 +1,9 @@
 // Requiring Libraries
 const mongoose = require('mongoose')
 
+// Profile Picture Location
+const profilePictureBasePath = 'uploads/profilePictures'
+
 // Declaring the user schema
 const userSchema = new mongoose.Schema({
 
@@ -42,10 +45,12 @@ const userSchema = new mongoose.Schema({
 
     // List of bandmates
     bandmates: {
-        type: [String],
-        required: false
+        type: [mongoose.Schema.Types.ObjectId],
+        required: false,
+        ref: 'User'
     }
 })
 
 // Export the user model
 module.exports = mongoose.model('User', userSchema)
+module.exports.profilePictureBasePath = profilePictureBasePath

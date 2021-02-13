@@ -1,18 +1,18 @@
 <div class="index_page">
 
     <!-- Sidenav -->
-    <%- include('../components/sidebar', { logged_user: name }) %>
+    <%- include('../components/sidebar', { user: user }) %>
 
     <div class="page">
 
         <!-- Top Bar -->
-        <%- include('../components/topbar', { page_title: "Projects" }) %>
+        <%- include('../components/topbar', { page_title: title, is_project: true }) %>
 
         <!-- Main Area -->
         <div class="main">
             <div class="project_items">
                 <% for(project of project_list){ %>
-                    <%- include('../components/project_item', { project_name: project }) %>
+                    <%- include('../components/project_item', { project: project }) %>
                 <% } %>
             </div>
         </div>

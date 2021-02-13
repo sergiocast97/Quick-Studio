@@ -1,45 +1,15 @@
-<style>
-    .test_area section { display: flex; flex-wrap: wrap; align-items: flex-start; }
-    .test_area section > * { margin: 48px; max-width: 25%; }
-</style>
-
 <div class="index_page">
 
     <!-- Sidenav -->
-    <%- include('../components/sidebar', { logged_user: name }) %>
+    <%- include('../components/sidebar', { user: "" }) %>
 
     <div class="page">
 
         <!-- Top Bar -->
-        <%- include('../components/topbar', { page_title: "Projects" }) %>
+        <%- include('../components/topbar', { page_title: title }) %>
 
         <!-- Test Area -->
         <div class="test_area">
-
-            <!-- Text Input -->
-            <section>
-                <!-- Text Area -->
-                <div class="input_text">
-                    <div class="input_container">
-                        <label class="input_label" for="exampleTextarea">Example textarea</label>
-                        <textarea id="exampleTextarea" ></textarea>
-                    </div>
-                </div>
-                <!-- Textbox -->
-                <div class="input_text">
-                    <div class="input_container">
-                        <label class="input_label" for="login_email" >Example textbox</label>
-                        <input id="login_email" type="email" />
-                    </div>
-                </div>
-                <!--Textbox Wrong -->
-                <div class="input_text wrong">
-                    <div class="input_container">
-                        <label class="input_label" for="login_password">Example wrong textbox</label>
-                        <input id="login_password" type="password" />
-                    </div>
-                </div>
-            </section>
 
             <!-- Button -->
             <section>
@@ -83,12 +53,30 @@
                 </div>
                 <!-- Slider -->
                 <div class="slider">
-                    <label for="slider_example">Slider example</label>
-                    <input type="range" id="slider_example" name="slider_example" min="1" max="3" step="1">
+                    <!-- <label for="slider_example">Slider example</label> -->
+                    <input type="range" id="slider_example" name="slider_example" min="1" max="9" step="1">
                     <div class="slider_options">
                         <div class="single_option">Option 1</div>
                         <div class="single_option">Option 2</div>
                         <div class="single_option">Option 3</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Text Input -->
+            <section>
+                <!-- Text Area -->
+                <div class="input_text">
+                    <div class="input_container">
+                        <label class="input_label" for="exampleTextarea">Example textarea</label>
+                        <textarea id="exampleTextarea" autocomplete="off"></textarea>
+                    </div>
+                </div>
+                <!-- Textbox -->
+                <div class="input_text">
+                    <div class="input_container">
+                        <label class="input_label" for="exampleTextbox" >Example textbox</label>
+                        <input id="exampleTextbox" type="email" autocomplete="off"/>
                     </div>
                 </div>
             </section>
@@ -103,14 +91,28 @@
                     <h4>Heading 4</h4>
                     <h5>Heading 5</h5>
                 </div>
-                <div class="headers">
-                    <p>Paragraph text</p>
-                    <a href='index.html'>Anchor tag</a>
+                <div>
+                    <p><a href='#'>This is an example of a link</a></p>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, repellat tempora. Praesentium, officia laboriosam cumque iste sint accusantium doloribus sed ut sunt eius, odit asperiores dolore fugiat quidem minima esse?</p>
+                </div>
+                <div>
+                    <p>Unordered list: </p>
+                    <br>
                     <ul>
                         <li>Hello</li>
                         <li>Hello</li>
                         <li>Hello</li>
                     </ul>
+                </div>
+                <div>
+                    <p>Ordered list: </p>
+                    <br>
+                    <ol>
+                        <li>Hello</li>
+                        <li>Hello</li>
+                        <li>Hello</li>
+                    </ol>
                 </div>
             </section>
             

@@ -70,3 +70,7 @@ a {
         color: $primary-dark-1;
     }
 }
+
+ul, ol {
+    list-style-position: inside;
+}

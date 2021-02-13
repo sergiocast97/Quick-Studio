@@ -1,0 +1,14 @@
+.test_area {
+
+    section {
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+
+        & > * {
+            margin: 32px;
+            max-width: 25%;
+        }
+    }
+}

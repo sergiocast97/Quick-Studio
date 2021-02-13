@@ -1,75 +1,86 @@
 <div class="index_page">
 
     <!-- Sidenav -->
-    <%- include('../components/sidebar', { logged_user: name }) %>
+    <%- include('../components/sidebar', { user: user }) %>
 
     <div class="page">
 
         <!-- Top Bar -->
-        <%- include('../components/topbar', { page_title: "Settings" }) %>
+        <%- include('../components/topbar', { page_title: title }) %>
 
         <!-- Main Area -->
         <div class="main">
-        
-            <div class="settings_area">
+
+            <!-- <form class="settings_area" action="/settings?_method=PUT" method="POST" enctype="multipart/form-data"> -->
+            <form class="settings_area" action="/settings?_method=PUT" method="POST">
 
                 <div class="settings_header">
                     <div class="user_picture">
-                        <img src="img/icons/placeholders/user.jpg">
+                        <img src="/img/icons/placeholders/user.jpg">
                     </div>
                     <div class="user_details">
-                        <div class="full_name"><%- name %></div>
-                        <div class="location">Location</div>
+                        <div class="full_name"><%- `${ user.name} ${ user.surname }` %></div>
+                        <div class="location"><%- user.location ? user.location : "Location" %></div>
                     </div>
                 </div>
 
                 <div class="user_settings">
-
+                    <!-- Name -->
                     <div class="input_text">
                         <div class="input_container">
-                            <label class="input_label" for="name" >Name</label>
-                            <input id="login_name" type="text" name="name" required/>
+                            <label class="input_label" for="settings_name" >Name</label>
+                            <input id="settings_name" type="text" name="name" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <!-- Surname -->
+                    <div class="input_text">
+                        <div class="input_container">
+                            <label class="input_label" for="settings_surname" >Surname</label>
+                            <input id="settings_surname" type="text" name="surname" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="input_text">
+                        <div class="input_container">
+                            <label class="input_label" for="settings_email" >Email</label>
+                            <input id="settings_email" type="text" name="email" autocomplete="off" />
                         </div>
                     </div>
 
                     <div class="input_text">
                         <div class="input_container">
-                            <label class="input_label" for="surname" >Surname</label>
-                            <input id="login_name" type="text" name="surname" required/>
+                            <label class="input_label" for="settings_username" >Username</label>
+                            <input id="settings_username" type="text" name="username"  autocomplete="off" />
                         </div>
                     </div>
 
                     <div class="input_text">
                         <div class="input_container">
-                            <label class="input_label" for="email" >Email</label>
-                            <input id="login_name" type="text" name="email" required/>
+                            <label class="input_label" for="settings_location" >Location</label>
+                            <input id="settings_location" type="text" name="location"  autocomplete="off" />
                         </div>
                     </div>
 
                     <div class="input_text">
                         <div class="input_container">
-                            <label class="input_label" for="username" >Username</label>
-                            <input id="login_name" type="text" name="username" required/>
+                            <label class="input_label" for="settings_password" >Password</label>
+                            <input id="settings_password" type="text" name="password" autocomplete="new-password" />
                         </div>
                     </div>
-
-                    <div class="input_text">
-                        <div class="input_container">
-                            <label class="input_label" for="location" >Location</label>
-                            <input id="login_name" type="text" name="location" required/>
-                        </div>
-                    </div>
-
-                    <div class="input_text">
-                        <div class="input_container">
-                            <label class="input_label" for="password" >Password</label>
-                            <input id="login_name" type="text" name="password" required/>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-        
+
+                <!-- Register button -->
+                <button class="primary_button" type="submit">Update Details</button>
+                
+            </form>
+
+            <!--
+            <form method="POST" action="/settings/?_method=DELETE">
+                <button class="primary_button" type="submit">Delete</button>
+            </form>
+            -->
         </div>
     </div>
 </div>

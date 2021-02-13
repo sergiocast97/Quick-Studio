@@ -10,7 +10,9 @@
 <div class="index_page">
 
     <h1>There has been an issue</h1>
-    <h3>Error Status: <%= error.status %></h3>
-    <h4>Error Message: <%= error.message %></h4>
+    <h4>Error Status: <%= error.status %></h4>
+    <p>Error Message: <%= error.message %></p>
 
 </div>
+
+<p>Error Stack: <%= error.stack %></p>

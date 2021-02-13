@@ -19,7 +19,7 @@
                 <!-- Username -->
                 <div class="input_text">
                     <div class="input_container">
-                        <label class="input_label" for="username" >Username</label>
+                        <label class="input_label" for="register_username" >Username</label>
                         <input id="register_username" type="text" name="username" value="<%= user.username %>" required/>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                 <!-- Email -->
                 <div class="input_text">
                     <div class="input_container">
-                        <label class="input_label" for="email" >Email</label>
+                        <label class="input_label" for="register_email" >Email</label>
                         <input id="register_email" type="email" name="email" value="<%= user.email %>" required />
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                     <!-- Name -->
                     <div class="input_text">
                         <div class="input_container">
-                            <label class="input_label" for="name" >Name</label>
+                            <label class="input_label" for="register_name" >Name</label>
                             <input id="register_name" type="text" name="name" value="<%= user.name %>" required/>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                     <!-- Surname -->
                     <div class="input_text">
                         <div class="input_container">
-                            <label class="input_label" for="surname" >Surname</label>
+                            <label class="input_label" for="register_surname" >Surname</label>
                             <input id="register_surname" type="text" name="surname" value="<%= user.surname %>" required/>
                         </div>
                     </div>
@@ -53,8 +53,8 @@
                 <!-- Password -->
                 <div class="input_text">
                     <div class="input_container">
-                        <label class="input_label" for="password">Password</label>
-                        <input id="register_password" type="password" name="password" value="<%= user.password %>" required />
+                        <label class="input_label" for="register_password">Password</label>
+                        <input id="register_password" type="password" name="password" value="<%= user.password %>" required autocomplete="new-password" />
                     </div>
                 </div>
                 

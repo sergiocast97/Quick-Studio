@@ -1,6 +1,9 @@
 // Requiring Libraries
 const mongoose = require('mongoose')
 
+// Project Images Location
+const projectImageBasePath = 'uploads/projectImage'
+
 // Declaring the Project schema
 const projectSchema = new mongoose.Schema({
 
@@ -10,30 +13,43 @@ const projectSchema = new mongoose.Schema({
         required: true
     },
 
-    // Project Duration
-    duration: {
-        type: Number,
-        required: false
-    },
-
     // Project Picture
     picture: {
         type: String,
         required: false
     },
 
+
     // Project Creation Date
     creation_date: {
         type: Date,
-        required: false
+        required: true,
+        default: Date.now
+    },
+
+    // Project Last Modified Date
+    last_modified_date: {
+        type: Date,
+        required: false,
+        default: Date.now,
+    },
+
+    // List of Collaborators
+    collaborators: {
+        type: [mongoose.Schema.Types.ObjectId],
+        required: false,
+        ref: 'User'
     },
 
     // Project List of Tracks
     tracks: {
-        type: [track],
-        rquired: false
+        type: [mongoose.Schema.Types.ObjectId],
+        required: false,
+        ref: 'Track'
     }
+
 })
 
 // Export the user model
 module.exports = mongoose.model('Project', projectSchema)
+module.exports.projectImageBasePath = projectImageBasePath

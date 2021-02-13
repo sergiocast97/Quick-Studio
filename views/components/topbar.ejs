@@ -1,5 +1,12 @@
 <div class="topbar">
     <div class="floating_topbar">
+        <!-- Page title -->
         <h1 class="title"><%= page_title %></h1>
+        <!-- Button to create projects -->
+        <% if ( locals.is_project ) { %>
+            <form action="/new" method="POST" class="new_project">
+                <button class="primary_button" type="submit">New Project</button>
+            </form>
+        <% } %>
     </div>
 </div>

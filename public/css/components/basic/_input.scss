@@ -15,7 +15,8 @@
         top: 0;
         margin: 0;
         padding: 15px 10px 0 ;
-        pointer-events: none;
+        cursor: text;
+        //pointer-events: none;
         
         font-size: $text-m;
         transition: all 0.4s;

@@ -5,11 +5,13 @@ const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 
 // Controller
 const indexRouter = require('./controller/router')
 const errorRouter = require('./controller/error')
+app.use(methodOverride('_method'))
 
 // View
 app.set('view engine', 'ejs')
@@ -28,9 +30,9 @@ const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log('Connected to mongoose'))
 
-// Starting up
+// Start up the routers
 app.use('/', indexRouter)
 app.use('/', errorRouter)
-app.listen(port, () =>{
-    console.log(`\nApp listening at http://localhost:${port}\n`)
-});
+
+// Start up the app
+app.listen(port, () =>{ console.log(`\nApp listening at http://localhost:${port}\n`) });

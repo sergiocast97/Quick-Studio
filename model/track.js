@@ -18,8 +18,9 @@ const trackSchema = new mongoose.Schema({
 
     // Recordings
     recordings: {
-        type: [ recording ],
-        required: false
+        type: [mongoose.Schema.Types.ObjectId],
+        required: false,
+        ref: 'Recording'
     }
 })
 

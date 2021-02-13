@@ -1,6 +1,9 @@
 // Requiring Libraries
 const mongoose = require('mongoose')
 
+// Project Images Location
+const recordingBasePath = 'uploads/recording'
+
 // Declaring the Recording schema
 const recordingSchema = new mongoose.Schema({
 
@@ -20,3 +23,4 @@ const recordingSchema = new mongoose.Schema({
 
 // Export the user model
 module.exports = mongoose.model('Recording', recordingSchema)
+module.exports.recordingBasePath = recordingBasePath
