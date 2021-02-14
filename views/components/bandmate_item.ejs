@@ -7,7 +7,7 @@
         <div class="bandmate_info">
             <div class="bandmate_name"><%= bandmate.name + " " + bandmate.surname %></div>
             <div class="bandmate_details">
-                <div class="location">Location</div>
+                <div class="location"><%- user.location ? user.location : "Location" %></div>
             </div>
         </div>
     </div>
