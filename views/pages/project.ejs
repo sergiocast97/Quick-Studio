@@ -10,6 +10,20 @@
 
         <!-- Main Area -->
         <div class="main">
-            
+            <form class="project_edit" action="/project/<%- title %>?_method=PUT" method="POST">
+
+                <!-- Name -->
+                <div class="input_text">
+                    <div class="input_container">
+                        <label class="input_label" for="project_name" >Project Name</label>
+                        <input id="project_name" type="text" name="name" autocomplete="off" />
+                    </div>
+                </div>
+
+                <!-- Register button -->
+                <button class="primary_button" type="submit">Update Details</button>
+                
+            </form>
         </div>
+    </div>
 </div>

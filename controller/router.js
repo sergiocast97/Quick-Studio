@@ -180,6 +180,46 @@ router.get('/project/:name', checkAuthenticated, async (req, res) => {
     // Render the project page
     res.render('pages/project', { title: project.name, user: await req.user, project: project })
 })
+router.put('/project/:name', checkAuthenticated, async (req, res) => {
+    let project
+    try {
+        // Find the project on the database
+        console.log(req.params.name)
+        project = await Project.findOne({ name: req.params.name })
+        console.log(project)
+        
+        // Update the details if they've been provided
+        if (req.body.name) project.name = req.body.name
+        project.last_modified_date = Date.now()
+
+        // Save the project details
+        await project.save()
+        console.log("Project updated")
+        // Redirect to the settings page
+        res.redirect('/project/' + project.name)
+    } catch {
+        // If anything goes wrong, go back to the Settings page
+        console.log("Project could not be updated")
+        res.redirect('/project/' + req.params.name)
+    }
+})
+// Delete User
+router.delete('/project/:name', async (req, res) => {
+    // Declare an empty user
+    let project
+    try {
+        // Find the project on the database
+        project = await Project.findOne({ username: req.params.name })
+        // Remove user
+        await project.remove()
+        console.log("Project removed")
+        // Redirect to Main Page
+        res.redirect('/')
+    } catch {
+        // Redirect to Main Page
+        res.redirect('/')
+    }
+})
 
 // Settings Page
 router.get('/settings', checkAuthenticated, async (req, res) => {
@@ -194,32 +234,22 @@ router.put('/settings', checkAuthenticated, async (req, res) => {
     // Declare an empty user
     let user
     try {
-
         // Find the logged user
         logged_user = await req.user
         user = await User.findOne({ username: logged_user.username })
-
-        // Generate a hashed password
-        //const hashedPassword = await bcrypt.hash(req.body.password, 10)
-
-        // Get the settings details
-        //user.username = req.body.username
-        user.location = req.body.location
-        user.name = req.body.name
-        //user.surname = req.body.surname
-        //user.email = req.body.email
-        //user.password = hashedPassword
-
+        // Update the details if they've been provided
+        if (req.body.name) user.name = req.body.name
+        if (req.body.surname) user.surname = req.body.surname
+        if (req.body.email) user.email = req.body.email
+        if (req.body.username) user.username = req.body.username
+        if (req.body.location) user.location = req.body.location
+        if (req.body.password) user.password = await bcrypt.hash(req.body.password, 10)
         // Save the user details
         await user.save()
-
         console.log("User updated")
-
         // Redirect to the settings page
         res.redirect('/settings')
-
     } catch {
-
         // If anything goes wrong, go back to the Settings page
         console.log("User could not be updated")
         res.redirect('/settings')
