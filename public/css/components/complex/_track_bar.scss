@@ -1,0 +1,21 @@
+.track_bar {
+    
+    padding-top: $size-64;
+    width: 100%;
+
+    .floating_track_bar {
+        
+        position: fixed;
+        z-index: 1;
+        top: $size-64;
+        bottom: $size-64;
+        right: 0;
+        
+        width: $size-128;
+        padding: $size-16 $size-48;
+    
+        background-color: $neutral-light-3;
+        border-left: 1px solid $neutral-light-2;
+        border-right: 1px solid $neutral-light-2;
+    }
+}

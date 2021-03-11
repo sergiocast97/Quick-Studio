@@ -1,34 +1,45 @@
 <div class="index_page">
 
+    <!-- Loading Screen -->
+    <%- include('../components/ui/loading_screen') %>
+
     <!-- Sidenav -->
-    <%- include('../components/sidebar', { user: user }) %>
+    <%- include('../components/main/sidebar', { user: user }) %>
 
     <div class="page">
 
         <!-- Top Bar -->
-        <%# - include('../components/topbar', { page_title: title }) #%>
-        <div class="app_header"></div>
+        <%- include('../components/app/app_header', { page_title : title }) %>
 
         <!-- Main Area -->
         <div class="main">
-            <form class="project_edit" action="/project/<%- project.project_id %>?_method=PUT" method="POST">
 
-                <!-- Name -->
-                <div class="input_text">
-                    <div class="input_container">
-                        <label class="input_label" for="project_name" >Project Name</label>
-                        <input id="project_name" type="text" name="name" autocomplete="off" />
+            <!-- Track Bar -->
+            <%- include('../components/app/track_bar', { test : "test" }) %>
+
+            <div class="app_main">
+
+                <form class="project_edit" action="/project/<%- project.project_id %>?_method=PUT" method="POST">
+
+                    <!-- Name -->
+                    <div class="input_text">
+                        <div class="input_container">
+                            <label class="input_label" for="project_name" >Project Name</label>
+                            <input id="project_name" type="text" name="name" autocomplete="off" />
+                        </div>
                     </div>
-                </div>
-
-                <!-- Register button -->
-                <button class="primary_button" type="submit">Update Details</button>
+    
+                    <!-- Register button -->
+                    <button class="primary_button" type="submit">Update Details</button>
+                    
+                </form>
                 
-            </form>
+            </div>
+            
         </div>
 
         <!-- Bottom Bar -->
-        <div class="app_footer"></div>
+        <%- include('../components/app/app_footer', { test: "Test" }) %>
 
     </div>
 </div>
