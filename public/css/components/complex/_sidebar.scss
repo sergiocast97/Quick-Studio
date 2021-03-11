@@ -1,13 +1,13 @@
 .sidebar {
 
-    padding-left: $size-192;
+    padding-left: $size-256;
     height: 100%;
     background-color: $white;
 
     .floating_sidebar {
 
         height: 100vh;
-        width: $size-192;
+        width: $size-256;
         position: fixed;
         z-index: 1;
         top: 0;
@@ -19,8 +19,8 @@
 
         .logo_area {
 
-            min-height: $size-64;
-            padding: $size-16;
+            min-height: $size-128;
+            padding: $size-32;
             background-color: $secondary-light-3;
             border: 1px solid $secondary-light-2;
 
@@ -30,7 +30,7 @@
 
             .logo {
 
-                height: $size-24;
+                height: $size-32;
                 width: auto;
             }
         }
@@ -39,7 +39,7 @@
 
             height: 100%;
             background-color: $neutral-light-3;
-            padding: $size-48 0;
+            padding: $size-64 0;
 
             border-left: 1px solid $neutral-light-2;
             border-right: 1px solid $neutral-light-2;
@@ -51,13 +51,14 @@
 
                 .nav_item {
 
-                    padding: $size-16;
+                    padding: $size-24 $size-32;
                     
                     border-top: 1px solid $neutral-light-3;
                     border-bottom: 1px solid $neutral-light-3;
 
                     color: $neutral-dark-2;
                     display: flex;
+                    align-items: center;
 
                     transition: 0.25s;
 
@@ -78,12 +79,12 @@
                             height: $size-24;
                         }
 
-                        margin-right: $size-16;
+                        margin-right: $size-24;
                     }
 
                     .nav_item_name {
 
-                        font-size: $text-16;
+                        font-size: $text-18;
                     }
                 }
             }
@@ -91,14 +92,17 @@
 
         .user_area {
 
-            min-height: $size-64;
-            padding: $size-16;
+            height: $size-64;
+            padding: $size-16 $size-32;
 
             background-color: $secondary-light-3;
             border: 1px solid $secondary-light-2;
 
+            display: flex;
+            align-items: center;
+
             .user {
-                
+
                 display: flex;
                 align-items: center;
 
@@ -109,7 +113,7 @@
                     object-fit: cover;
                     
                     border-radius: 100%;
-                    margin-right: $size-8;
+                    margin-right: $size-16;
                 }
         
                 .user_name { @include text_style($text-16, $text-reg, $neutral-dark-1) }

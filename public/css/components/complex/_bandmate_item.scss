@@ -37,16 +37,16 @@
         border-bottom: 1px solid $neutral-light-2;
 
         width: 100%;
-        padding: $size-16 $size-24;
+        padding: $size-24 $size-32;
         border-radius: 0 $border $border 0;
 
         .bandmate_info {
 
-            .bandmate_name { @include text_style($text-14, $text-bold, $secondary-dark-2) }
+            .bandmate_name { @include text_style($text-24, $text-bold, $secondary-dark-2) }
 
             .bandmate_details {
 
-                & > * { @include text_style($text-12, $text-reg, $neutral-dark-1) }
+                & > * { @include text_style($text-18, $text-reg, $neutral-dark-1) }
             }
         }
     }

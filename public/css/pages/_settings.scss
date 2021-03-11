@@ -1,46 +1,57 @@
+/**
+ * User Settings Area
+ */
 .settings_area {
 
-    .settings_header {
+    padding: $size-64;
+    height: 100%;
 
-        display: flex;
+    .settings_form {
 
-        .user_picture {
-
-            margin-right: $size-32;
-            
-            img {
-
-                width: $size-128;
-                height: $size-128;
-                object-fit: cover;
-
-                border-radius: 100%;
+        .settings_header {
+    
+            display: flex;
+    
+            .user_picture {
+    
+                margin-right: $size-32;
+                
+                img {
+    
+                    width: $size-128;
+                    height: $size-128;
+                    object-fit: cover;
+    
+                    border-radius: 100%;
+                }
+            }
+    
+            .user_details {
+    
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+    
+                .full_name { @include text_style($text-64, $text-bold, $neutral-dark-3) }
+    
+                .location { @include text_style($text-24, $text-reg, $neutral-dark-2) }
             }
         }
-
-        .user_details {
-
-            display: flex;
-            flex-direction: column;
-
-            .full_name { @include text_style($text-48, $text-bold, $neutral-dark-3) }
-
-            .location { @include text_style($text-24, $text-reg, $neutral-dark-2) }
+    
+        .user_settings {
+    
+            margin-top: $size-64;
+            padding-right: $size-64;
+    
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-flow: row dense;
+            gap: $size-48;
+        }
+    
+        .primary_button {
+            margin-top: $size-64;
         }
     }
 
-    .user_settings {
-
-        margin-top: $size-64;
-        padding-right: $size-64;
-
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-flow: row dense;
-        gap: $size-48;
-    }
-
-    .primary_button {
-        margin-top: $size-48;
-    }
 }

@@ -17,7 +17,7 @@ error.use(function(err, req, res, next) {
 
     // Render the error
     res.status(err.status || 500)
-    res.render('pages/error', { error: err, title: err.name })
+    res.render('pages/error', { error: err, title: err.status })
 })
 
 // Export the router

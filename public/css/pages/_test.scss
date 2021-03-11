@@ -1,4 +1,9 @@
+/**
+ * UI Test Dashboard
+ */
 .test_area {
+
+    padding: $size-64;
 
     section {
 
@@ -7,7 +12,8 @@
         align-items: flex-start;
 
         & > * {
-            margin: $size-32;
+            margin-right: $size-64;
+            margin-bottom: $size-64;
             max-width: 25%;
         }
     }

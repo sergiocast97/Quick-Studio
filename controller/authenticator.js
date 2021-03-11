@@ -12,24 +12,25 @@ function initialize(passport, getUserByEmail, getUserById){
         
         // If no email was found, 
         if (user == null) {
+            console.log('No user with that username \n')
             return done(null, false, { message: 'No user with that email' })
         }
 
         // Attempt to authenticate the user
         try {
-            console.log('Authenticating user\n')
+            console.log('Authenticating user \n')
             if (await bcrypt.compare(password, user.password)) {
                 // Return the user object (Authenticated)
-                console.log('User Authenticated\n')
+                console.log('User Authenticated \n')
                 return done(null, user);
             } else {
                 // Incorrect Password
-                console.log('User could not be authenticated\n')
+                console.log('User could not be authenticated \n')
                 return done(null, false, { message: 'Incorrect Password' })
             }
         // Something bad happened
         } catch (e) {
-            console.log('\nSomething happened with the authentication\n')
+            console.log('Something happened with the authentication \n')
             return done(e)
         }
     }

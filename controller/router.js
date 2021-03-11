@@ -92,26 +92,30 @@ function randomString(length) {
 
 /* Handling routes */
 
-// Test
+/* Show Tes Page */
 router.get('/test', function (req, res) {
     res.render('pages/test', { title: 'Test Page', name: "Test Area" })
 })
 
-// Login
+/* Show Login Page */
 router.get('/login', checkNotAuthenticated, async (req, res) => {
     res.render('pages/login', { title: 'Sign In' })
 })
-.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+
+/* Log in the user */
+router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
     failureFlash: true
 }))
 
-// Register
+/* Show the Register Page */
 router.get('/register', checkNotAuthenticated, (req, res) => {
     res.render('pages/register', { title: 'Register', user: new User() })
 })
-.post('/register', checkNotAuthenticated, async (req, res) => {
+
+/* Register the User */
+router.post('/register', checkNotAuthenticated, async (req, res) => {
     try {
 
         // Generate a hashed password
@@ -144,7 +148,7 @@ router.get('/register', checkNotAuthenticated, (req, res) => {
     }
 })
 
-// Projects
+/* Show the Projects page */
 router.get('/', checkAuthenticated, async (req, res) => {
     try {
 
@@ -159,7 +163,7 @@ router.get('/', checkAuthenticated, async (req, res) => {
     }
 })
 
-// New Project (TODO)
+/* Create a new Project */
 router.post('/new', checkAuthenticated, async (req, res) => {
     try {
 
@@ -184,7 +188,7 @@ router.post('/new', checkAuthenticated, async (req, res) => {
     }
 })
 
-// Edit Project
+/* Show an Individual Project */
 router.get('/project/:project_id', checkAuthenticated, async (req, res) => {
 
     // Get the project
@@ -195,6 +199,7 @@ router.get('/project/:project_id', checkAuthenticated, async (req, res) => {
     res.render('pages/project', { title: project.name, user: await req.user, project: project })
 })
 
+/* Edit the Project (TODO) */
 router.put('/project/:project_id', checkAuthenticated, async (req, res) => {
     try {
 
@@ -222,7 +227,7 @@ router.put('/project/:project_id', checkAuthenticated, async (req, res) => {
     }
 })
 
-// Delete User
+/* Delete a Project */
 router.delete('/project/:project_id', async (req, res) => {
 
     try {
@@ -243,7 +248,7 @@ router.delete('/project/:project_id', async (req, res) => {
     }
 })
 
-// Settings Page
+/* Show the Settings Page */
 router.get('/settings', checkAuthenticated, async (req, res) => {
     try {
         // Show the Settings page
@@ -252,6 +257,8 @@ router.get('/settings', checkAuthenticated, async (req, res) => {
         res.redirect('/')
     }
 })
+
+/* Update User Details */
 router.put('/settings', checkAuthenticated, async (req, res) => {
     // Declare an empty user
     let user
@@ -278,7 +285,7 @@ router.put('/settings', checkAuthenticated, async (req, res) => {
     }
 })
 
-// Delete User
+/* Delete a User */
 router.delete('/settings', async (req, res) => {
     // Declare an empty user
     let user
@@ -301,7 +308,7 @@ router.delete('/settings', async (req, res) => {
     }
 })
 
-// Bandmates
+/* Show the Bandmates Section */
 router.get('/bandmates', checkAuthenticated, async (req, res) => {
     try {
         // Get all of the users
@@ -313,11 +320,11 @@ router.get('/bandmates', checkAuthenticated, async (req, res) => {
     }
 })
 
-// Logout
+/* Logout the User */
 router.delete('/logout', (req, res) => {
     req.logOut()
     res.redirect('/login')
 })
 
-/* Export the router */
+// Export the Router
 module.exports = router

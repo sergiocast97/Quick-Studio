@@ -1,14 +1,19 @@
+/**
+ * Bandmates Area
+ */
 .bandmates_area {
     
-    padding: $size-48;
+    padding: $size-64;
     height: 100%;
     
     .bandmates {
 
+        padding-right: $size-192;
+
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-auto-flow: row dense;
-        gap: $size-48 $size-48;
+        gap: $size-64 $size-64;
     }
 
 }

@@ -1,6 +1,6 @@
 .app_header {
     
-    padding-top: $size-64;
+    padding-top: $size-128;
     width: 100%;
 
     .floating_app_header {
@@ -8,10 +8,10 @@
         position: fixed;
         z-index: 1;
         top: 0;
-        left: $size-192;
+        left: $size-256;
         right: 0;
         
-        height: $size-64;
+        height: $size-128;
         padding: $size-16 $size-48;
     
         background-color: $neutral-light-3;
