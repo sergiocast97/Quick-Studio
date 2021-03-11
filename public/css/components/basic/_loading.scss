@@ -1,8 +1,11 @@
+/**
+ * Loding Screen
+ */
 .loading_screen {
 
     // Cover the whole view
     position: fixed;
-    z-index: 66;
+    z-index: 999;
     top: 0;
     left: 0;
     width: 100%;
@@ -15,18 +18,22 @@
 
     // The logo fades in
     img {
-        width: 256px;
-        height: auto;
+
+        height: $size-64;
+        width: auto;
 
         opacity: 0;
         animation: fadeIn 1s;
         animation-fill-mode: forwards;
+        transition-timing-function: ease-in-out;
     }
 
     // Animation class
     &.hidden {
+
         animation: fadeUp 1s;
         animation-fill-mode: forwards;
+        transition-timing-function: ease-in-out;
     }
 }
 

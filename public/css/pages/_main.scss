@@ -1,6 +1,6 @@
 .main {
     
-    padding: 48px;
+    padding: $size-48;
     height: 100%;
     
     .project_items {
@@ -8,7 +8,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-auto-flow: row dense;
-        gap: 48px 48px;
+        gap: $size-48 $size-48;
     }
 
 }

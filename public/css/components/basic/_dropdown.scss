@@ -1,3 +1,6 @@
+/**
+ * Dropdown Selector
+ */
 .dropdown {
 
     min-width: 200px;
@@ -9,9 +12,7 @@
     
     border: solid 2px $neutral-light-2;
     background-color:  $neutral-light-3;
-    color: $neutral-dark-3;
-    font-size: $text-m;
-    font-weight: $text-regular;
+    @include text_style($text-16, $text-reg, $neutral-dark-3);
 
     background:url('../img/icons/down_arrow.svg');
 	background-repeat: no-repeat;

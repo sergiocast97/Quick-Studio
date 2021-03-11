@@ -2,3 +2,16 @@
 $breakpoint-desktop : 1024px;
 $breakpoint-tablet : 768px;
 $breakpoint-mobile : 480px;
+
+// Sizes
+$size-8  :clamp(6px  , 0.4166vw, 8px  ); // 8px
+$size-12 :clamp(8px  , 0.625vw , 12px ); // 12px
+$size-16 :clamp(12px , 0.8333vw, 16px ); // 16px
+$size-24 :clamp(16px , 1.25vw  , 24px ); // 24px
+$size-32 :clamp(24px , 1.666vw , 32px ); // 32px
+$size-48 :clamp(32px , 2.5vw   , 48px ); // 48px
+$size-64 :clamp(48px , 3.333vw , 64px ); // 64px
+$size-96 :clamp(64px , 5vw     , 96px ); // 96px
+$size-128:clamp(96px , 6.666vw , 128px); // 128px
+$size-192:clamp(128px, 10vw    , 192px); // 192px
+$size-256:clamp(192px, 13.333vw, 256px); // 256px

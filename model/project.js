@@ -7,6 +7,12 @@ const projectImageBasePath = 'uploads/projectImage'
 // Declaring the Project schema
 const projectSchema = new mongoose.Schema({
 
+    // Project ID
+    project_id: {
+        type: String,
+        required: true
+    },
+
     // Project Name
     name: {
         type: String,

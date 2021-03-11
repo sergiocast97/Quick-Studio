@@ -1,6 +1,9 @@
+/**
+ * Bandmate Item
+ */
 .bandmate_item {
 
-    height: 128px;
+    height: $size-128;
     width: 100%;
 
     background-color: $neutral-light-3;
@@ -10,8 +13,8 @@
     .item_header {
 
         height: 100%;
-        width: 128px;
-        padding: 16px;
+        width: $size-128;
+        padding: $size-16;
 
         border-top: 1px solid $neutral-light-2;
         border-left: 1px solid $neutral-light-2;
@@ -22,8 +25,8 @@
 
         .bandmate_picture {
             
-            width: 96px;
-            height: 96px;
+            width: $size-96;
+            height: $size-96;
         }
     }
 
@@ -34,26 +37,16 @@
         border-bottom: 1px solid $neutral-light-2;
 
         width: 100%;
-        padding: 16px 24px;
+        padding: $size-16 $size-24;
         border-radius: 0 $border $border 0;
 
         .bandmate_info {
 
-            .bandmate_name {
-
-                font-weight: $text-bold;
-                font-size: $text-s;
-                color: $secondary-dark-2
-            }
+            .bandmate_name { @include text_style($text-14, $text-bold, $secondary-dark-2) }
 
             .bandmate_details {
 
-                & > * {
-
-                    font-weight: $text-regular;
-                    font-size: $text-xs;
-                    color: $neutral-dark-1;
-                }
+                & > * { @include text_style($text-12, $text-reg, $neutral-dark-1) }
             }
         }
     }

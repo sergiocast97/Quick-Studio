@@ -35,16 +35,14 @@ img {
         &::after {
 
             // Show a logo
-            background : url('../img/icons/logo_light.svg') no-repeat;
+            background : url('../img/logos/logo_light.svg') no-repeat;
             background-size: auto 32px;
             background-position: 50% 40%;
 
             // Show the message 
             content: "Only available on Desktop";
 
-            font-size: $text-2xl;
-            font-weight: $text-regular;
-            color: $neutral-dark-3;
+            @include text_style($text-32, $text-reg, $neutral-dark-3);
 
             height: 100vh;
             display: flex;

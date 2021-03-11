@@ -6,11 +6,12 @@
     <div class="page">
 
         <!-- Top Bar -->
-        <%- include('../components/topbar', { page_title: title }) %>
+        <%# - include('../components/topbar', { page_title: title }) #%>
+        <div class="app_header"></div>
 
         <!-- Main Area -->
         <div class="main">
-            <form class="project_edit" action="/project/<%- title %>?_method=PUT" method="POST">
+            <form class="project_edit" action="/project/<%- project.project_id %>?_method=PUT" method="POST">
 
                 <!-- Name -->
                 <div class="input_text">
@@ -25,5 +26,9 @@
                 
             </form>
         </div>
+
+        <!-- Bottom Bar -->
+        <div class="app_footer"></div>
+
     </div>
 </div>

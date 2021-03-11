@@ -8,17 +8,17 @@
     height: auto;
     width: auto;
     min-width: 100px;
-    padding: 8px 16px;
+    padding: $size-8 $size-16;
     
     outline: none;
-    background-color: $primary;
+    border: none;
     border: 1px solid $primary-dark-1;
-    color: $primary-dark-2;
     border-radius: 2px;
+    background-color: $primary;
 
+    font-size: 100%;
+    @include text_style($text-16, $text-bold, $primary-dark-2);
     text-align: center;
-    font-size: $text-m;
-    font-weight: $text-bold;
     white-space: nowrap;
     
     cursor: pointer;
@@ -61,9 +61,7 @@
     outline: none;
     background-color: transparent;
 
-    color: $secondary-dark-1;
-    font-size: $text-m;
-    font-weight: $text-regular;
+    @include text_style($text-16, $text-reg, $secondary-dark-1);
     white-space: nowrap;
     
     cursor: pointer;
@@ -81,18 +79,16 @@
  */
 .tertiary_button {
     
+    padding: 0;
     border: none;
     outline: none;
     cursor: pointer;
     height: auto;
     background-color: transparent;
+    
+    @include text_style($text-14, $text-reg, $primary-dark-1);
+    white-space: nowrap;
     text-decoration: underline;
-    white-space: nowrap;
-
-    color: $primary-dark-1;
-    font-size: $text-s;
-    font-weight: $text-regular;
-    white-space: nowrap;
 
     transition: 0.25s;
 

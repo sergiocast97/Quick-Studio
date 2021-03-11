@@ -11,7 +11,7 @@
     .entry_panel {
 
         height: 100%;
-        padding: 64px;
+        padding: $size-64;
         background-color: $white;
 
         display: flex;
@@ -27,14 +27,14 @@
             align-items: baseline;
 
             & > * {
-                margin-right: 24px;
+                margin-right: $size-24;
             }
         }
 
         .form_area {
 
             .title {
-                margin-bottom: 32px;
+                margin-bottom: $size-32;
             }
 
             form {
@@ -43,11 +43,11 @@
                     display: grid;
                     grid-template-columns: repeat(2, 1fr);
                     grid-auto-flow: 1fr;
-                    gap: 24px;
+                    gap: $size-24;
                 }
 
                 & > * {
-                    margin-bottom: 32px;
+                    margin-bottom: $size-32;
                 }
             }
         }
@@ -68,7 +68,7 @@
             background: rgba($neutral-light-2, 0.1);
             backdrop-filter: blur(5px);
 
-            padding: 64px;
+            padding: $size-64;
     
             // Place the items extended and to the side
             display: flex;
@@ -79,7 +79,7 @@
             .logo_area {
                 
                 .logo {
-                    height: 42px;
+                    height: $size-48;
                     width: auto;
                 }
             }
@@ -87,17 +87,17 @@
             .message_area {
 
                 .message {
-                    font-size: 96px;
+                    font-size: $text-96;
                     color: $white;
                     text-align: end;
-                    line-height: 115px;
+                    line-height: 1.15;
                 }
             }
 
             .credits_area {
 
                 .credits {
-                    font-size: $text_xs;
+                    font-size: $text-12;
                     color: transparent;
                 }
             }

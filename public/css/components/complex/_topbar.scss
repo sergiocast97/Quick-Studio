@@ -1,6 +1,6 @@
 .topbar {
 
-    padding-top: 64px;
+    padding-top: $size-64;
     width: 100%;
 
     .floating_topbar {
@@ -8,11 +8,11 @@
         position: fixed;
         z-index: 1;
         top: 0;
-        left: 192px;
+        left: $size-192;
         right: 0;
         
-        height: 64px;
-        padding: 16px 48px;
+        height: $size-64;
+        padding: $size-16 $size-48;
     
         background-color: $neutral-light-3;
         border-top: 1px solid $neutral-light-2;
@@ -23,11 +23,6 @@
         justify-content: space-between;
         align-items: center;
     
-        .title {
-    
-            color: $neutral-dark-3;
-            font-size: $text-l;
-            font-weight: $text-regular;
-        }
+        .title { @include text_style($text-18, $text-reg, $neutral-dark-3) }
     }
 }

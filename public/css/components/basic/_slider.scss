@@ -1,15 +1,13 @@
-.slider {
+/**
+ * Slider
+ */
+ .slider {
 
     width: 100%;
     display: flex;
     flex-direction: column;
 
-    label {
-
-        font-size: $text-m;
-        font-weight: $text-regular;
-        color: $neutral-dark-3;
-    }
+    label { @include text_style($text-16, $text-reg, $neutral-dark-3) }
 
 
     // Slider related variables to keep it alive
@@ -129,10 +127,7 @@
         align-items: baseline;
 
         .single_option {
-
-            color: $neutral-dark-3;
-            font-size: $text-xs;
-            font-weight: $text-regular;
+            @include text_style($text-12, $text-reg, $neutral-dark-3);
         }
     }
 }

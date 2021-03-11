@@ -1,3 +1,4 @@
+// Activating the inputs
 const setActive = (el, active) => {
     // Get the parent node of the field
     const formField = el.parentNode.parentNode
@@ -19,10 +20,11 @@ const setActive = (el, active) => {
     el.onfocus = () => { setActive(el, true) }
 })
 
+// Click label to select the input
 $(function() {
     $('.input_label').click(function() {
-        let id = $(this).attr('for');
+        let id = $(this).attr('for')
         console.log(id)
-        $('#'+id).select();
-    });
-});
+        $('#'+id).select()
+    })
+})

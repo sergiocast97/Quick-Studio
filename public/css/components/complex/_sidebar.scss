@@ -1,13 +1,13 @@
 .sidebar {
 
-    padding-left: 192px;
+    padding-left: $size-192;
     height: 100%;
-    background-color: aqua;
+    background-color: $white;
 
     .floating_sidebar {
 
         height: 100vh;
-        width: 192px;
+        width: $size-192;
         position: fixed;
         z-index: 1;
         top: 0;
@@ -19,8 +19,8 @@
 
         .logo_area {
 
-            min-height: 64px;
-            padding: 16px;
+            min-height: $size-64;
+            padding: $size-16;
             background-color: $secondary-light-3;
             border: 1px solid $secondary-light-2;
 
@@ -30,7 +30,7 @@
 
             .logo {
 
-                height: 24px;
+                height: $size-24;
                 width: auto;
             }
         }
@@ -39,7 +39,7 @@
 
             height: 100%;
             background-color: $neutral-light-3;
-            padding: 48px 0;
+            padding: $size-48 0;
 
             border-left: 1px solid $neutral-light-2;
             border-right: 1px solid $neutral-light-2;
@@ -51,7 +51,7 @@
 
                 .nav_item {
 
-                    padding: 16px;
+                    padding: $size-16;
                     
                     border-top: 1px solid $neutral-light-3;
                     border-bottom: 1px solid $neutral-light-3;
@@ -74,16 +74,16 @@
                     .nav_item_icon {
                         
                         img {
-                            width: 24px;
-                            height: 24px;
+                            width: $size-24;
+                            height: $size-24;
                         }
 
-                        margin-right: 16px;
+                        margin-right: $size-16;
                     }
 
                     .nav_item_name {
 
-                        font-size: $text-m;
+                        font-size: $text-16;
                     }
                 }
             }
@@ -91,8 +91,8 @@
 
         .user_area {
 
-            min-height: 64px;
-            padding: 16px;
+            min-height: $size-64;
+            padding: $size-16;
 
             background-color: $secondary-light-3;
             border: 1px solid $secondary-light-2;
@@ -104,20 +104,15 @@
 
                 .user_picture {
 
-                    width: 32px;
-                    height: 32px;
+                    width: $size-32;
+                    height: $size-32;
                     object-fit: cover;
                     
                     border-radius: 100%;
-                    margin-right: 8px;
+                    margin-right: $size-8;
                 }
         
-                .user_name {
-        
-                    color: $neutral-dark-1;
-                    font-size: $text-m;
-                    font-weight: $text-regular;
-                }
+                .user_name { @include text_style($text-16, $text-reg, $neutral-dark-1) }
             }
         }
     }

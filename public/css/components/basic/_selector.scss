@@ -1,14 +1,12 @@
+/**
+ * Selector (Checkbox and Radio Button)
+ */
 .selector {
 
     position: relative;
     display: block;
 
-    label {
-        
-        font-size: $text-l;
-        font-weight: $text-regular;
-        color: $neutral-dark-3;
-    }
+    label { @include text_style($text-18, $text-reg, $neutral-dark-3) }
 
     // Variables
     $checkbox-width: 18px;

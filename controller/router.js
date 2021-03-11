@@ -113,8 +113,10 @@ router.get('/register', checkNotAuthenticated, (req, res) => {
 })
 .post('/register', checkNotAuthenticated, async (req, res) => {
     try {
+
         // Generate a hashed password
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
+
         // Create a new user
         const user = new User({
             username: req.body.username,
@@ -124,11 +126,15 @@ router.get('/register', checkNotAuthenticated, (req, res) => {
             password: hashedPassword
         })
         console.log(JSON.stringify(user))
+
         // Save the User
         const newUser = await user.save()
+
         // Redirect to Login
         res.redirect('/login')
+
     } catch {
+
         // If error, redirect to register with populated fields
         res.render('/register', {
             user: user,
@@ -141,11 +147,14 @@ router.get('/register', checkNotAuthenticated, (req, res) => {
 // Projects
 router.get('/', checkAuthenticated, async (req, res) => {
     try {
+
         // Get all of the users
         const project_list = await Project.find({})
         //const project_list = ["Breakdown test 01", "Test 01", "Test 02", "Test 03"]
         res.render('pages/index', { title: "Projects", user: await req.user, project_list: project_list })
+    
     } catch {
+
         res.redirect('/')
     }
 })
@@ -153,9 +162,11 @@ router.get('/', checkAuthenticated, async (req, res) => {
 // New Project (TODO)
 router.post('/new', checkAuthenticated, async (req, res) => {
     try {
+
         // Create a new empty project
         const project = new Project({
-            name: randomString(10),
+            project_id: randomString(24),
+            name: "New Project",
         })
         console.log(JSON.stringify(project))
         
@@ -164,58 +175,69 @@ router.post('/new', checkAuthenticated, async (req, res) => {
         
         // Redirect to the newly created project
         console.log("Project created")
-        res.redirect('/project/' + project.name )
+        res.redirect('/project/' + project.project_id )
 
     } catch {
+
         console.log("The project could not be saved")
         res.redirect('/')
     }
 })
 
 // Edit Project
-router.get('/project/:name', checkAuthenticated, async (req, res) => {
+router.get('/project/:project_id', checkAuthenticated, async (req, res) => {
+
     // Get the project
-    console.log("Going to: " + req.params.name )
-    const project = await Project.findOne({ name: req.params.name })
+    console.log("Going to: " + req.params.project_id )
+    const project = await Project.findOne({ project_id: req.params.project_id })
+
     // Render the project page
     res.render('pages/project', { title: project.name, user: await req.user, project: project })
 })
-router.put('/project/:name', checkAuthenticated, async (req, res) => {
-    let project
+
+router.put('/project/:project_id', checkAuthenticated, async (req, res) => {
     try {
+
         // Find the project on the database
-        console.log(req.params.name)
-        project = await Project.findOne({ name: req.params.name })
-        console.log(project)
+        console.log(req.params.project_id)
+        let project = await Project.findOne({ project_id: req.params.project_id })
+        console.log(JSON.stringify(project))
         
         // Update the details if they've been provided
         if (req.body.name) project.name = req.body.name
         project.last_modified_date = Date.now()
 
         // Save the project details
-        await project.save()
+        const savedProject = await project.save()
         console.log("Project updated")
+
         // Redirect to the settings page
-        res.redirect('/project/' + project.name)
+        res.redirect('/project/' + project.project_id)
+
     } catch {
+
         // If anything goes wrong, go back to the Settings page
         console.log("Project could not be updated")
-        res.redirect('/project/' + req.params.name)
+        res.redirect('/project/' + req.params.project_id)
     }
 })
+
 // Delete User
-router.delete('/project/:name', async (req, res) => {
-    // Declare an empty user
-    let project
+router.delete('/project/:project_id', async (req, res) => {
+
     try {
         // Find the project on the database
-        project = await Project.findOne({ username: req.params.name })
+        let project = await Project.findOne({ project_id: req.params.project_id })
+
         // Remove user
-        await project.remove()
+        removedProject = await project.remove()
         console.log("Project removed")
+
         // Redirect to Main Page
         res.redirect('/')
+
     } catch {
+
         // Redirect to Main Page
         res.redirect('/')
     }

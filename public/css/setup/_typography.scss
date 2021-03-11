@@ -7,70 +7,63 @@ html {
     line-height: 1.5;
 }
 
+input, textarea, button {
+    font-family: inherit;
+}
+
 // Text sizes
-$text-xs  : clamp( 0.8rem, 0.8vw, 1.2rem); // 12px
-$text-s   : clamp( 1.0rem, 0.9vw, 1.4rem); // 14px
-$text-m   : clamp( 1.2rem, 1.1vw, 1.6rem); // 16px
-$text-l   : clamp( 1.4rem, 1.4vw, 1.8rem); // 18px
-$text-xl  : clamp( 1.6rem, 1.7vw, 2.4rem); // 24px
-$text-2xl : clamp( 1.8rem, 2.2vw, 3.2rem); // 32px
-$text-3xl : clamp( 2.4rem, 3.3vw, 4.8rem); // 48px
-$text-4xl : clamp( 4.8rem, 4.4vw, 6.4rem); // 64px
+$text-12 : clamp( 1.0rem, 0.625vw,  1.2rem); // 12px
+$text-14 : clamp( 1.2rem, 0.7291vw, 1.4rem); // 14px
+$text-16 : clamp( 1.4rem, 0.8333vw, 1.6rem); // 16px
+$text-18 : clamp( 1.6rem, 0.9375vw, 1.8rem); // 18px
+$text-24 : clamp( 1.8rem, 1.25vw,   2.4rem); // 24px
+$text-32 : clamp( 2.4rem, 1.666vw,  3.2rem); // 32px
+$text-48 : clamp( 3.2rem, 2.5vw,    4.8rem); // 48px
+$text-64 : clamp( 4.8rem, 3.333vw,  6.4rem); // 64px
+$text-96 : clamp( 6.4rem, 5vw,      9.6rem); // 96px
 
 // Font Weight
-$text-thin : 100;
+$text-thin  : 100;
 $text-light : 300;
-$text-regular : 400;
-$text-bold : 700;
+$text-reg   : 400;
+$text-bold  : 700;
 $text-black : 900;
 
-h1 {
-    font-size: $text-4xl;
-    font-weight: $text-black;
-    color: $black;
+// Text Styling
+@mixin text_style($size, $weight, $color) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
 }
 
-h2 {
-    font-size: $text-3xl;
-    font-weight: $text-bold;
-    color: $black;
-}
+// Text
 
-h3 {
-    font-size: $text-2xl;
-    font-weight: $text-bold;
-    color: $black;
-}
+body, p, li {
 
-h4 {
-    font-size: $text-xl;
-    font-weight: $text-bold;
-    color: $black;
-}
-
-h5 {
-    font-size: $text-l;
-    font-weight: $text-bold;
-    color: $black;
-}
-
-p, li {
-    font-size: $text-l;
-    font-weight: $text-regular;
-    color: $black;
-}
-
-a {
-    text-decoration: none;
-    font-size: $text-l;
-    font-weight: $text-regular;
-    color: $primary-dark-2;
-
-    &:hover {
-        color: $primary-dark-1;
-    }
+    @include text_style($text-14, $text-reg, $black);
+    line-height: 1.5;
 }
 
 ul, ol {
+    
     list-style-position: inside;
 }
+
+a {
+    
+    @include text_style($text-14, $text-reg, $primary-dark-2);
+    text-decoration: none;
+    &:hover { color: $primary-dark-1 }
+}
+
+// Text Headings 
+
+h1 { @include text_style($text-64, $text-bold, $black) }
+
+h2 { @include text_style($text-48, $text-bold, $black) }
+
+h3 { @include text_style($text-32, $text-bold, $black) }
+
+h4 { @include text_style($text-24, $text-bold, $black) }
+
+h5 { @include text_style($text-18, $text-bold, $black) }

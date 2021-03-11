@@ -1,7 +1,7 @@
 /**
  * Text Input
  */
- .input_text {
+.input_text {
 
     display: block;
     width: 100%;
@@ -14,11 +14,11 @@
         left: 0;
         top: 0;
         margin: 0;
-        padding: 15px 10px 0 ;
+        padding: 15px 12px 0 ;
         cursor: text;
         //pointer-events: none;
         
-        font-size: $text-m;
+        font-size: $text-16;
         transition: all 0.4s;
     }
     
@@ -48,8 +48,7 @@
         border: 0;
         outline: 0;
         background: transparent;
-        color: $neutral-dark-3;
-        font-size: $text-m;
+        @include text_style($text-16, $text-reg, $neutral-dark-3);
     }
     
     textarea {
@@ -71,8 +70,7 @@
         // Moving the label up
         .input_label {
 
-            color: $neutral-dark-3;
-            font-size: $text-xs;
+            @include text_style($text-12, $text-reg, $neutral-dark-3);
             transform: translateY(-10px);
         }
     }
@@ -82,7 +80,7 @@
 
         .input_label {
 
-            font-size: $text-xs;
+            @include text_style($text-12, $text-reg, $neutral-dark-3);
             transform: translateY(-10px);
         }
     }
