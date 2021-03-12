@@ -90,8 +90,7 @@
             .message_area {
 
                 .message {
-                    font-size: $text-96;
-                    color: $white;
+                    @include text_style($text-96, $text-bold, $white);
                     text-align: end;
                     line-height: 1.15;
                 }

@@ -1,0 +1,30 @@
+/**
+ * App Button
+ */
+.app_button {
+
+    width: $size-48;
+    height: $size-48;
+    background-color: $neutral-light-2;
+    border: 1px solid $neutral-light-1;
+    border-radius: $border;
+    padding: $size-8;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.25s;
+
+    img {
+
+        width: 100%;
+        height: auto;
+        pointer-events: none;
+    }
+
+    &:hover {
+
+        background-color: $secondary-light-2;
+    }
+}

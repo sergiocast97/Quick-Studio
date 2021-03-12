@@ -27,6 +27,7 @@
             
             width: $size-96;
             height: $size-96;
+            border-radius: $border;
         }
     }
 
@@ -42,7 +43,11 @@
 
         .bandmate_info {
 
-            .bandmate_name { @include text_style($text-24, $text-bold, $secondary-dark-2) }
+            .bandmate_name {
+                @include text_style($text-24, $text-semi, $secondary-dark-2);
+                line-height: 1;
+                margin-bottom: $size-8;
+            }
 
             .bandmate_details {
 

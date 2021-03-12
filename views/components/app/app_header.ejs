@@ -1,6 +1,74 @@
+<!-- Project App Top Bar -->
 <div class="app_header">
-
     <div class="floating_app_header">
+
+        <!-- Header Top -->
+        <div class="app_header_top">
+
+            <!-- Main Navigation-->
+            <% nav_items = [ "File", "Edit", "View", "Setting", "Help" ] %>
+            <div class="app_header_nav">
+                <% for(item of nav_items){ %>
+                    <div class="app_header_nav_item"><%- item %></div>
+                <% } %>
+            </div>
+
+            <!-- Editable Project Name -->
+            <div class="project_name" contenteditable="true" id="project_name"><%- project.name %></div>
+
+        </div>
+
+        <!-- Header Bottom -->
+        <div class="app_header_bottom">
+
+            <!-- Player Navigation -->
+            <div class="app_player_nav">
+                
+                <div class="media_play_nav">
+
+                    <!-- Back Button -->
+                    <div class="app_button" id="back">
+                        <img src="/img/icons/player/back.svg" alt="Back">
+                    </div>
+
+                    <!-- Play Button -->
+                    <div class="app_button" id="play">
+                        <img src="/img/icons/player/play.svg" alt="Play">
+                    </div>
+
+                    <!-- Forward Button -->
+                    <div class="app_button" id="forward">
+                        <img src="/img/icons/player/forward.svg" alt="Forward">
+                    </div>
+
+                </div>
+
+                <div class="media_record_nav">
+
+                    <!-- Stop Button -->
+                    <div class="app_button" id="stop">
+                        <img src="/img/icons/player/stop.svg" alt="Stop">
+                    </div>
+
+                    <!-- Record Button -->
+                    <div class="app_button" id="record">
+                        <img src="/img/icons/player/record.svg" alt="Record">
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- Playing Time -->
+            <div class="app_playing_time">
+                <span class="minutes">00</span>
+                :
+                <span class="seconds">14</span>
+                :
+                <span class="miliseconds">5</span>
+            </div>
+
+        </div>
 
     </div>   
 </div>

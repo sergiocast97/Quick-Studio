@@ -227,6 +227,37 @@ router.put('/project/:project_id', checkAuthenticated, async (req, res) => {
     }
 })
 
+/* Update via AJAX */
+router.post('/project/update/:project_id', async function(req, res) {
+    try {
+
+        // Get the New Name
+        let name = req.body.name;
+        console.log("New Name: " + name)
+
+        // Get the Project
+        let project = await Project.findOne({ project_id: req.params.project_id })
+        console.log(JSON.stringify(project))
+
+        // Update the details if they've been provided
+        if (req.body.name) project.name = req.body.name
+        project.last_modified_date = Date.now()
+
+        // Save the project details
+        const savedProject = await project.save()
+        console.log("Project updated")
+
+        // Redirect to the settings page
+        res.send({ name: name, message: "Name updated Successfully"});
+
+    } catch {
+
+        // If anything goes wrong, go back to the Settings page
+        console.log("Project could not be updated")
+        //res.redirect('/project/' + req.params.project_id)
+    }
+});
+
 /* Delete a Project */
 router.delete('/project/:project_id', async (req, res) => {
 

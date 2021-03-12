@@ -5,7 +5,8 @@
     </div>
     <div class="item_body">
         <div class="bandmate_info">
-            <div class="bandmate_name"><%= bandmate.name + " " + bandmate.surname %></div>
+            <% const full_name = bandmate.name + " " + bandmate.surname %>
+            <div class="bandmate_name"><%- (  full_name.length > 25 ?  full_name.substring(0 , 25) + '...' :  full_name ) %></div>
             <div class="bandmate_details">
                 <div class="location"><%- user.location ? user.location : "Location" %></div>
             </div>

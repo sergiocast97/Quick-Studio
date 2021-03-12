@@ -27,6 +27,7 @@
             
             width: $size-96;
             height: $size-96;
+            border-radius: 100%;
         }
     }
 
@@ -41,6 +42,10 @@
         border-radius: 0 $border $border 0;
 
         .project_info {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
             .project_name { @include text_style($text-18, $text-bold, $primary-dark-2) }
 

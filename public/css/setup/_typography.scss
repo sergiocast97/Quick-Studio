@@ -1,9 +1,12 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;500;600;700;900&display=swap');
+//@import url("https://use.typekit.net/jcx5agg.css");
 
 html {
     font-size: 62.5%;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Nunito Sans', 'lato', 'Lato', sans-serif;
+    font-stretch: ultra-condensed;
     line-height: 1.5;
 }
 
@@ -23,11 +26,13 @@ $text-64 : clamp( 4.8rem, 3.333vw,  6.4rem); // 64px
 $text-96 : clamp( 6.4rem, 5vw,      9.6rem); // 96px
 
 // Font Weight
-$text-thin  : 100;
+$text-thin  : 200;
 $text-light : 300;
 $text-reg   : 400;
+$text-med   : 500;
+$text-semi  : 600;
 $text-bold  : 700;
-$text-black : 900;
+$text-black : 800;
 
 // Text Styling
 @mixin text_style($size, $weight, $color) {

@@ -1,4 +1,31 @@
 <div class="track_bar">
 
-    <div class="floating_track_bar"></div>
+    <% for(track of track_list){ %>
+        <div class="track">
+
+            <div class="track_header">
+
+                <!-- Track Colour -->
+                <div class="track_colour"></div>
+
+                <!-- Track Name -->
+                <div class="track_name"><%- track.name %></div>
+
+            </div>
+
+            <!-- Track Volume -->
+            <div class="track_volume">
+
+                <!-- Volume Slider -->
+                <div class="slider track_volume_slider">
+                    <input type="range" id="slider_example" name="slider_example" min="0" max="100" step="1">
+                </div>
+
+            </div>
+
+            <div class="track_control">
+
+            </div>
+        </div>
+    <% } %>
 </div>

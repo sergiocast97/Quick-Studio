@@ -62,14 +62,18 @@
 
                     transition: 0.25s;
 
-                    &:hover {
+                    &:hover, &.active {
 
                         border-top: 1px solid $neutral-light-1;
                         border-bottom: 1px solid $neutral-light-1;
 
                         background-color: $secondary-light-3;
                         box-shadow: inset -4px 0 $primary;
-                        color: $neutral-dark-3;
+
+                        .nav_item_name {
+
+                            color: $neutral-dark-3;
+                        }
                     }
 
                     .nav_item_icon {
@@ -84,7 +88,7 @@
 
                     .nav_item_name {
 
-                        font-size: $text-18;
+                        @include text_style($text-18, $text-med, $neutral-dark-2)
                     }
                 }
             }

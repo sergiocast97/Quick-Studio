@@ -11,37 +11,13 @@
             <!-- Main Navigation -->
             <div class="main_navigation">
 
-                <!-- Navigation Item -->
-                <a class="nav_item" href="/">
-                    <div class="nav_item_icon">
-                        <img src="/img/icons/navigation/projects.svg">
-                    </div>
-                    <div class="nav_item_name">Projects</div>
-                </a>
+                <%- include('sidebar_item', { id: 'projects', href: '/', name: 'Projects', img: 'projects.svg',  }) %>
 
-                <!-- Navigation Item -->
-                <a class="nav_item" href="/bandmates">
-                    <div class="nav_item_icon">
-                        <img src="/img/icons/navigation/bandmates.svg">
-                    </div>
-                    <div class="nav_item_name">Bandmates</div>
-                </a>
+                <%- include('sidebar_item', { id: 'bandmates', href: '/bandmates', name: 'Bandmates', img: 'bandmates.svg',  }) %>
 
-                <!-- Navigation Item -->
-                <a class="nav_item" href="/settings">
-                    <div class="nav_item_icon">
-                        <img src="/img/icons/navigation/settings.svg">
-                    </div>
-                    <div class="nav_item_name">Settings</div>
-                </a>
+                <%- include('sidebar_item', { id: 'settings', href: '/settings', name: 'Settings', img: 'settings.svg',  }) %>
 
-                <!-- Navigation Item -->
-                <a class="nav_item" href="/test">
-                    <div class="nav_item_icon">
-                        <img src="/img/icons/navigation/dashboard.svg">
-                    </div>
-                    <div class="nav_item_name">Dashboard</div>
-                </a>
+                <%- include('sidebar_item', { id: 'test', href: '/test', name: 'Dashboard', img: 'dashboard.svg',  }) %>
 
             </div>
 

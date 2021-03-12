@@ -12,14 +12,25 @@
         <%- include('../components/app/app_header', { page_title : title }) %>
 
         <!-- Main Area -->
-        <div class="main">
+        <div class="app_main">
+
+            <% const track_list = [ { name: "Guitar", color: "purple"}, { name: "Bass", color: "green"} ] %>
 
             <!-- Track Bar -->
-            <%- include('../components/app/track_bar', { test : "test" }) %>
+            <%- include('../components/app/track_bar', { track_list : track_list }) %>
 
-            <div class="app_main">
+            <div class="app_main_track_area">
 
-                <form class="project_edit" action="/project/<%- project.project_id %>?_method=PUT" method="POST">
+                <div class="tracks">
+                    <% for(track of track_list){ %>
+                        <div class="track">
+                            <div class="track_section" start="0" duration="1" ></div>
+                        </div>
+                    <% } %>
+                </div>
+
+                <% /* 
+                <form class="project_edit" action="/project/< %- project.project_id % >?_method=PUT" method="POST">
 
                     <!-- Name -->
                     <div class="input_text">
@@ -33,6 +44,7 @@
                     <button class="primary_button" type="submit">Update Details</button>
                     
                 </form>
+                */ %>
                 
             </div>
             

@@ -1,0 +1,153 @@
+/**
+ * Top bar in the Project
+ */
+.app_header {
+    
+    padding-top: $size-128;
+    width: 100%;
+
+    // Making the header float on top
+    .floating_app_header {
+        
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: $size-256;
+        right: 0;
+        
+        height: $size-128;
+        
+    
+        background-color: $neutral-light-3;
+        border-top: 1px solid $neutral-light-2;
+        border-right: 1px solid $neutral-light-2;
+        border-bottom: 1px solid $neutral-light-2;
+
+        display: flex;
+        flex-direction: column;
+
+        // Top Part of the Header
+        .app_header_top{
+
+            height: $size-48;
+            width: 100%;
+
+            // Navigation Bar
+            .app_header_nav {
+    
+                z-index: 6;
+                display: flex;
+    
+                .app_header_nav_item {
+    
+                    padding: $size-8 $size-24;
+                    border: solid 1px $neutral-light-3;
+                    border-top: none;
+                    cursor: pointer;
+                    z-index: 6;
+        
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+        
+                    @include text_style($text-18, $text-med, $neutral-dark-3);
+        
+                    transition: 0.25s;
+        
+                    &:hover {
+        
+                        background-color: $secondary-light-3;
+                        border: solid 1px $secondary-light-2;
+                        border-top: none;
+    
+                        &:first-child {
+                            border-left: solid 1px $secondary-light-3;
+                        }
+                    }
+                }
+            }
+    
+            // Project Title
+            .project_name {
+    
+                position: fixed;
+                right: 50vh;
+                left: 50vh;
+                top: $size-8;
+                z-index: 4;
+
+                white-space: nowrap;
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                @include text_style($text-24, $text-semi, $neutral-dark-3);
+
+                &>div>br {
+                    display:none;
+                }
+
+                &>* {
+                    display:inline;
+                    white-space:nowrap;
+                }
+
+                &:focus {
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+
+        // Bottom Part of the header
+        .app_header_bottom {
+
+            height: 100%;
+            padding: $size-16;
+
+            // Player part of the Nav
+            .app_player_nav {
+
+                display: flex;
+                
+                .app_button {
+                    margin-right: $size-16;
+                    z-index: 6;
+                }
+
+                .media_play_nav {
+
+                    display: flex;
+                    align-items: center;
+                    margin-right: $size-64;
+                }
+
+                .media_record_nav {
+
+                    display: flex;
+                    align-items: center;
+                }
+
+            }
+
+            // Playing time
+            .app_playing_time {
+                position: fixed;
+                right: 50vh;
+                left: 50vh;
+                top: $size-64;
+                z-index: 4;
+
+                white-space: nowrap;
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                @include text_style($text-24, $text-reg, $neutral-dark-2);
+
+                &:focus {
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+    }
+}

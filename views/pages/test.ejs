@@ -1,7 +1,7 @@
 <div class="index_page">
 
     <!-- Sidenav -->
-    <%- include('../components/main/sidebar', { user: "" }) %>
+    <%- include('../components/main/sidebar', { user: (typeof  locals.user==undefined ? locals.user : { username: "testUser"}) }) %>
 
     <div class="page">
 
