@@ -46,7 +46,7 @@
             .bandmate_name {
                 @include text_style($text-24, $text-semi, $secondary-dark-2);
                 line-height: 1;
-                margin-bottom: $size-8;
+                margin-bottom: $size-12;
             }
 
             .bandmate_details {

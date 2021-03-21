@@ -8,7 +8,7 @@
     background-color: $neutral-light-2;
     border: 1px solid $neutral-light-1;
     border-radius: $border;
-    padding: $size-8;
+    padding: $size-12;
     cursor: pointer;
 
     display: flex;
@@ -25,6 +25,10 @@
 
     &:hover {
 
+        background-color: $secondary-light-3;
+    }
+
+    &:active {
         background-color: $secondary-light-2;
     }
 }

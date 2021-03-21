@@ -14,44 +14,38 @@
         <!-- Main Area -->
         <div class="app_main">
 
-            <% const track_list = [ { name: "Guitar", color: "purple"}, { name: "Bass", color: "green"} ] %>
+            <% const track_list = project.tracks %>
 
             <!-- Track Bar -->
             <%- include('../components/app/track_bar', { track_list : track_list }) %>
 
             <div class="app_main_track_area">
 
-                <div class="tracks">
+                <div class="recording_track_list">
                     <% for(track of track_list){ %>
-                        <div class="track">
-                            <div class="track_section" start="0" duration="1" ></div>
+
+                        <!-- Track -->
+                        <div class="recording_track" id="<%- track.track_id %>">
+                            <% for(recording of track.recordings){ %>
+
+                                <!-- Recording -->
+                                <!-- <div class="track_section <%- track.track_colour %>" start="0" duration="1" ></div> -->
+                            
+                            <% } %>
                         </div>
+
                     <% } %>
                 </div>
-
-                <% /* 
-                <form class="project_edit" action="/project/< %- project.project_id % >?_method=PUT" method="POST">
-
-                    <!-- Name -->
-                    <div class="input_text">
-                        <div class="input_container">
-                            <label class="input_label" for="project_name" >Project Name</label>
-                            <input id="project_name" type="text" name="name" autocomplete="off" />
-                        </div>
-                    </div>
-    
-                    <!-- Register button -->
-                    <button class="primary_button" type="submit">Update Details</button>
-                    
-                </form>
-                */ %>
-                
             </div>
-            
         </div>
 
         <!-- Bottom Bar -->
         <%- include('../components/app/app_footer', { test: "Test" }) %>
 
     </div>
+
+    <!-- Load App -->
+    <script src="/js/project_app/project.js"></script>
+    <script src="/js/project_app/record.js"></script>
+    
 </div>

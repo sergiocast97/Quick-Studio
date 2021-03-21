@@ -9,3 +9,64 @@ $shadow-focus: inset $shadow-hover;
 
 // Borders
 $border: 4px;
+
+// Center Align
+@mixin center_align() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Center Align
+@mixin editable_text() {
+
+    white-space: nowrap;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+
+    // Only 1 Line
+    &>div>br {
+        display:none;
+    }
+    &>* {
+        display:inline;
+        white-space:nowrap;
+    }
+
+    // No Outline
+    &:focus {
+        border: none;
+        outline: none;
+    }
+
+}
+
+// Track colours
+@mixin track_colours(){
+    &.purple { background-color: $secondary }
+    &.red { background-color: #E798AF }
+    &.orange { background-color: #E7B598 }
+    &.yellow { background-color: #E7DC98 }
+    &.green { background-color: $primary }
+    &.blue { background-color: #98CAE7 }
+}
+// Track Colour Border
+@mixin track_colour_border(){
+    &.purple { border: solid 1px $secondary }
+    &.red { border: solid 1px #E798AF }
+    &.orange { border: solid 1px #E7B598 }
+    &.yellow { border: solid 1px #E7DC98 }
+    &.green { border: solid 1px $primary }
+    &.blue { border: solid 1px #98CAE7 }
+}
+
+// Track colours
+@mixin track_colour_shadow(){
+    &.purple { box-shadow: $size-8 0 0 0 $secondary inset}
+    &.red { box-shadow: $size-8 0 0 0 #E798AF inset}
+    &.orange { box-shadow: $size-8 0 0 0 #E7B598 inset}
+    &.yellow { box-shadow: $size-8 0 0 0 #E7DC98 inset}
+    &.green { box-shadow: $size-8 0 0 0 $primary inset}
+    &.blue { box-shadow: $size-8 0 0 0 #98CAE7 inset}
+}

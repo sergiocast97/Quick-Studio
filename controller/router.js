@@ -129,22 +129,17 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
             surname: req.body.surname,
             password: hashedPassword
         })
-        console.log(JSON.stringify(user))
+        console.log("New User: " + JSON.stringify(user))
 
-        // Save the User
+        // Save the User and redirect to Login
         const newUser = await user.save()
-
-        // Redirect to Login
         res.redirect('/login')
 
-    } catch {
+    } catch (error) {
 
         // If error, redirect to register with populated fields
-        res.render('/register', {
-            user: user,
-            errorMessage: 'Error creating user'
-        })
-        console.log("\nThere has been an issue\n")
+        res.render('/register', { user: user, errorMessage: 'Error creating user' })
+        console.log("User could not be created: \n" + error)
     }
 })
 
@@ -154,7 +149,8 @@ router.get('/', checkAuthenticated, async (req, res) => {
 
         // Get all of the users
         const project_list = await Project.find({})
-        //const project_list = ["Breakdown test 01", "Test 01", "Test 02", "Test 03"]
+
+        // Show the User
         res.render('pages/index', { title: "Projects", user: await req.user, project_list: project_list })
     
     } catch {
@@ -167,23 +163,22 @@ router.get('/', checkAuthenticated, async (req, res) => {
 router.post('/new', checkAuthenticated, async (req, res) => {
     try {
 
+        // Generate ID and make sure it's unique
+        let new_id = ""
+        do { new_id = randomString(24) } while (! await Project.find({ id: new_id }))
+
         // Create a new empty project
-        const project = new Project({
-            project_id: randomString(24),
-            name: "New Project",
-        })
+        const project = new Project({ project_id: new_id, name: "New Project" })
         console.log(JSON.stringify(project))
         
-        // Save the Project
-        const newProject = await project.save()
-        
-        // Redirect to the newly created project
-        console.log("Project created")
+        // Save the Project and Redirect to new project
+        const new_project = await project.save()
         res.redirect('/project/' + project.project_id )
+        console.log("Project created \n")
 
-    } catch {
+    } catch (error) {
 
-        console.log("The project could not be saved")
+        console.log("The project could not be saved: " + error + "\n" )
         res.redirect('/')
     }
 })
@@ -197,86 +192,6 @@ router.get('/project/:project_id', checkAuthenticated, async (req, res) => {
 
     // Render the project page
     res.render('pages/project', { title: project.name, user: await req.user, project: project })
-})
-
-/* Edit the Project (TODO) */
-router.put('/project/:project_id', checkAuthenticated, async (req, res) => {
-    try {
-
-        // Find the project on the database
-        console.log(req.params.project_id)
-        let project = await Project.findOne({ project_id: req.params.project_id })
-        console.log(JSON.stringify(project))
-        
-        // Update the details if they've been provided
-        if (req.body.name) project.name = req.body.name
-        project.last_modified_date = Date.now()
-
-        // Save the project details
-        const savedProject = await project.save()
-        console.log("Project updated")
-
-        // Redirect to the settings page
-        res.redirect('/project/' + project.project_id)
-
-    } catch {
-
-        // If anything goes wrong, go back to the Settings page
-        console.log("Project could not be updated")
-        res.redirect('/project/' + req.params.project_id)
-    }
-})
-
-/* Update via AJAX */
-router.post('/project/update/:project_id', async function(req, res) {
-    try {
-
-        // Get the New Name
-        let name = req.body.name;
-        console.log("New Name: " + name)
-
-        // Get the Project
-        let project = await Project.findOne({ project_id: req.params.project_id })
-        console.log(JSON.stringify(project))
-
-        // Update the details if they've been provided
-        if (req.body.name) project.name = req.body.name
-        project.last_modified_date = Date.now()
-
-        // Save the project details
-        const savedProject = await project.save()
-        console.log("Project updated")
-
-        // Redirect to the settings page
-        res.send({ name: name, message: "Name updated Successfully"});
-
-    } catch {
-
-        // If anything goes wrong, go back to the Settings page
-        console.log("Project could not be updated")
-        //res.redirect('/project/' + req.params.project_id)
-    }
-});
-
-/* Delete a Project */
-router.delete('/project/:project_id', async (req, res) => {
-
-    try {
-        // Find the project on the database
-        let project = await Project.findOne({ project_id: req.params.project_id })
-
-        // Remove user
-        removedProject = await project.remove()
-        console.log("Project removed")
-
-        // Redirect to Main Page
-        res.redirect('/')
-
-    } catch {
-
-        // Redirect to Main Page
-        res.redirect('/')
-    }
 })
 
 /* Show the Settings Page */

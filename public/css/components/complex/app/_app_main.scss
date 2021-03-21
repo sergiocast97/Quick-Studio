@@ -9,13 +9,13 @@
         height: 100%;
         background-color: $secondary-light-3;
 
-        .tracks {
+        .recording_track_list {
 
             padding-top: $size-64;
             display: flex;
             flex-direction: column;
 
-            .track {
+            .recording_track {
 
                 height: $size-128;
                 width: 100%;
@@ -28,8 +28,12 @@
                     height: 100%;
                     width: 100px;
                     border-radius: $border;
-                    border: solid 1px $secondary-dark-1;
-                    background-color: $secondary;
+
+                    border: solid 1px $neutral-dark-1;
+                    background-color: $neutral;
+                    
+                    @include track_colours();
+                    @include track_colour_border();
                 }
             }
         }

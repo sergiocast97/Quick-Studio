@@ -3,13 +3,36 @@
     <div class="item_header">
         <img class="project_icon" src="/img/icons/placeholders/project.svg">
     </div>
+    <%
+        // Format day
+        const format_day = (day) => {
+            // Set the output
+            const output = day
+            // Limits on the 10s
+            if (day > 3 && day < 21) return output + 'th';
+            // Rest of the days
+            switch (day % 10) {
+                case 1:  return output + "st";
+                case 2:  return output + "nd";
+                case 3:  return output + "rd";
+                default: return output + "th";
+            }
+        }
+        // Show date
+        const format_date = (date) => {
+            let day = new Intl.DateTimeFormat('en', { day: 'numeric' }).format(date);
+            let month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date);
+            let year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
+            return `${ format_day(day) } ${ month }, ${ year }`
+        }
+    %>
     <div class="item_body">
         <div class="project_info">
             <div class="project_name"><%- (  project.name.length > 20 ?  project.name.substring(0 , 20) + '...' :  project.name ) %></div>
             <div class="project_details">
-                <div class="creation_date">Creation Date</div>
-                <div class="project_modified">Last Modified</div>
-                <div class="project_length">Project Length</div>
+                <div class="creation_date"><span>Created on</span><%- format_date(project.creation_date) %></div>
+                <div class="project_modified"><span>Edited</span><%- format_date(project.last_modified_date) %></div>
+                <!-- <div class="project_length">Project Length</div> -->
             </div>
         </div>
     </div>

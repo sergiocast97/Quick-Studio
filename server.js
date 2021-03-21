@@ -11,6 +11,7 @@ const mongoose = require('mongoose')
 // Controller
 const indexRouter = require('./controller/router')
 const errorRouter = require('./controller/error')
+const projectRouter = require('./controller/project')
 app.use(methodOverride('_method'))
 
 // View
@@ -28,11 +29,12 @@ mongoose.connect(process.env.DATABASE_URL, {
 })
 const db = mongoose.connection
 db.on('error', error => console.error(error))
-db.once('open', () => console.log('Connected to mongoose'))
+db.once('open', () => console.log('Connected to mongoose \n'))
 
 // Start up the routers
+app.use('/project/', projectRouter)
 app.use('/', indexRouter)
 app.use('/', errorRouter)
 
 // Start up the app
-app.listen(port, () =>{ console.log(`\nApp listening at http://localhost:${port}\n`) });
+app.listen(port, () =>{ console.log(`\nApp listening at http://localhost:${port} \n`) });

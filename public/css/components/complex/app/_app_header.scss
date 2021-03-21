@@ -76,25 +76,9 @@
                 top: $size-8;
                 z-index: 4;
 
-                white-space: nowrap;
-                text-align: center;
-                white-space: nowrap;
-                overflow: hidden;
+                
                 @include text_style($text-24, $text-semi, $neutral-dark-3);
-
-                &>div>br {
-                    display:none;
-                }
-
-                &>* {
-                    display:inline;
-                    white-space:nowrap;
-                }
-
-                &:focus {
-                    border: none;
-                    outline: none;
-                }
+                @include editable_text();
             }
         }
 

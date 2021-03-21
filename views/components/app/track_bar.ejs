@@ -1,31 +1,38 @@
 <div class="track_bar">
 
-    <% for(track of track_list){ %>
-        <div class="track">
-
-            <div class="track_header">
-
-                <!-- Track Colour -->
-                <div class="track_colour"></div>
-
-                <!-- Track Name -->
-                <div class="track_name"><%- track.name %></div>
-
-            </div>
-
-            <!-- Track Volume -->
-            <div class="track_volume">
-
-                <!-- Volume Slider -->
-                <div class="slider track_volume_slider">
-                    <input type="range" id="slider_example" name="slider_example" min="0" max="100" step="1">
+    <div class="track_list">
+        <% for(track of track_list){ %>
+            <div class="track <%- track.track_colour %>" id="<%- track.track_id %>">
+    
+                <div class="track_header">
+    
+                    <!-- Track Colour -->
+                    <div class="track_colour <%- track.track_colour %>"></div>
+    
+                    <!-- Track Name -->
+                    <div class="track_name" contenteditable="true"><%- track.track_name %></div>
+    
                 </div>
-
+    
+                <!-- Track Volume -->
+                <div class="track_volume">
+    
+                    <!-- Volume Slider -->
+                    <div class="slider track_volume_slider">
+                        <input type="range" id="slider_example" name="slider_example" min="0" max="1" step="0.01">
+                    </div>
+    
+                </div>
+    
+                <div class="track_control">
+    
+                </div>
             </div>
+        <% } %>
+    </div>
 
-            <div class="track_control">
+    <div class="button_holder">
+        <span id="add_track">Add Track</span>
+    </div>
 
-            </div>
-        </div>
-    <% } %>
 </div>

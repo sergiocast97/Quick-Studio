@@ -47,11 +47,16 @@
             flex-direction: column;
             justify-content: space-between;
 
-            .project_name { @include text_style($text-18, $text-bold, $primary-dark-2) }
+            .project_name { @include text_style($text-18, $text-bold, $primary-dark-2); margin-bottom: $size-8 }
 
             .project_details {
 
-                & > * { @include text_style($text-12, $text-reg, $neutral-dark-1) }
+                & > * { @include text_style($text-14, $text-reg, $neutral-dark-1) }
+
+                span { 
+                    font-weight: $text-semi;
+                    margin-right: 4px;
+                }
             }
         }
     }
