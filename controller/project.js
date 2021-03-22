@@ -13,7 +13,7 @@ router.post('/:project_id/project_name', async function(req, res) {
 
         // Get the passed Object
         let passed_data = req.body
-        let new_name = passed_data.name
+        let new_name = ( passed_data.name == "" ? project.name : passed_data.name)
 
         // Update the name and Last Modified Date
         project.name = new_name
@@ -86,7 +86,7 @@ router.post('/:project_id/track_name', async function(req, res) {
         // Get the passed Object
         let passed_data = req.body
         let track_id = passed_data.track_id
-        let new_name = passed_data.name
+        let new_name = ( passed_data.name == "" ? project.tracks.find(obj => obj.track_id == track_id).track_name : passed_data.name)
 
         // Update the track name and Last Modified Date
         project.tracks.find(obj => obj.track_id == track_id).track_name = new_name

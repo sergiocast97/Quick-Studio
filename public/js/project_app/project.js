@@ -114,7 +114,7 @@ $(function() {
                 success: function(response, status, http) {
                     if (response) {
 
-                        //$("#project_name").text(response.project_name)
+                        $(`#${ track_id } .track_name`).text(response.track_name)
                         console.log(response.message)
                     }
                 }
