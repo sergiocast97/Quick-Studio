@@ -1,5 +1,7 @@
 $(function() {
 
+    /* Variables */
+
     // Get the Project ID
     const project_id = window.location.pathname.split('/')[2]
     
@@ -9,8 +11,27 @@ $(function() {
     // Currently Selected track
     let selected_track = ""
 
+    // Toaster settings
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": false,
+        "positionClass": "toast-bottom-center",
+        "preventDuplicates": true,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "2000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+
     /* Update the Project Name */
-    function updateProjectName(event) {
+    function updateProjectName() {
         // Register the Enter key
         if (event.keyCode === 13) {
 
@@ -32,6 +53,7 @@ $(function() {
                         document.title = response.project_name + " - Quick Studio"
                         $("#project_name").text(response.project_name)
                         console.log(response.message)
+                        toastr.success(response.message, "Success")
                     }
                 }
             })
@@ -58,6 +80,7 @@ $(function() {
 
                     // Log the Success
                     console.log(response.message)
+                    toastr.success(response.message, "Success")
 
                     // Append the HTML
                     $(".track_list").append(
@@ -88,8 +111,40 @@ $(function() {
         })
     }
 
+    /* Delete Track */
+    function deleteTrack() {
+        if( selected_track !== "" ){
+
+            // Get the Object to Pass
+            const passed_data = { track_id: selected_track }
+
+            // Add Via Ajax
+            $.ajax({
+                // Establish the request type and URL
+                type: "DELETE",
+                url: "/project/" + project_id + "/delete_track",
+                // Establish the type and format of Data
+                dataType: "json",
+                data: passed_data,
+                // Update the Names
+                success: function(response, status, http) {
+                    if (response) {
+
+                        // Log the Success
+                        console.log(response.message)
+                        toastr.success(response.message, "Success")
+
+                        // Remove divs
+                        $( ".track#" + selected_track ).remove();
+                        $( ".recording_track#" + selected_track ).remove();
+                    }
+                }
+            })
+        }
+    }
+
     /* Update Track name */
-    function updateTrackName(event) {
+    function updateTrackName() {
         // Register the Enter key
         if (event.keyCode === 13) {
 
@@ -116,6 +171,7 @@ $(function() {
 
                         $(`#${ track_id } .track_name`).text(response.track_name)
                         console.log(response.message)
+                        toastr.success(response.message, "Success")
                     }
                 }
             })
@@ -190,13 +246,48 @@ $(function() {
         selected_track = ""
     }
 
+    /* Select Recording */
+    function selectRecording() {
+
+    }
+
+    /* Delete Recording */
+    function deleteRecording() {
+
+    }
+
+    /* Delete Project */
+    function deleteProject() {
+        
+        $.ajax({
+            // Establish the request type and URL
+            type: "DELETE",
+            url: "/project/" + project_id + "/delete_project",
+            // Establish the type and format of Data
+            dataType: "json",
+            data: {},
+            // Update the Names
+            success: function(response, status, http) {
+                if (response) {
+                    
+                    // Log the Success
+                    console.log(response.message)
+                    window.location.href = "/";
+                }
+            }
+        })
+    }
+
     /* Listeners */
 
     // Project name listener
     $("#project_name").keyup(updateProjectName)
 
     // Add Track listener
-    $( "#add_track" ).click(addTrack)
+    $("#add_track" ).click(addTrack)
+
+    // Add Track listener
+    $("#delete_track" ).click(deleteTrack)
 
     // Track Name Listener
     $(".track_name").keyup(updateTrackName)
@@ -207,6 +298,15 @@ $(function() {
     // Select Track Listener
     $(".track").click(selectTrack)
 
+    // Select Recording Listener
+    $(".recording").click(selectRecording)
+
+    // Select Recording Listener
+    $("#delete_recording").click(deleteRecording)
+
     // Deselect Track Listener
     $(".app_main_track_area").click(deselectTrack)
+
+    // Delete Project
+    $("#delete_project" ).click(deleteProject)
 })

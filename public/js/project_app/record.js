@@ -1,40 +1,64 @@
 $(function() {
 
-    // Draggable sections
-    $( ".track_section" ).draggable({ axis: "x" })
-
-    /* Record Sound */
-    $("#record").click(function() {
+    /* Start Recording */
+    function startRecording() {
 
         if( selected_track !== "" ) {
 
             console.log("Record selected")
-
-        } else {
-            console("Can't record, select a track first!")
         }
-    })
+    }
 
     /* Stop Recording */
-    $("#stop").click(function() {
+    function stopRecording() {
 
-        console.log("Recording stopped")
-    })
+        console.log("Stop Recording")
+    }
 
-    /* Save Recording */
-    $(window).keydown(function(event) {
-        // If Control or Command key is pressed and the S key is pressed
-        if((event.ctrlKey || event.metaKey) && event.which == 83) {
+    /* Play Recordings */
+    function playRecording() {
 
-            // Prevent default Save
-            event.preventDefault();
+        console.log("Playing the Recordings")
+    }
 
-            // Loop through every track
-            for(track of $( ".track_list" ).find( ".track" )){
-                alert(track.$("track_name").text())
-            }
+    /* Export the Recordings */
+    function exportRecording() {
 
-            return false;
-        }
-    })
+        console.log("Exporting the Recordings")
+    }
+
+    /* Going backwards */
+    function goBackwards() {
+
+        console.log("Going Backwards")
+    }
+
+    /* Going Forward */
+    function goForward() {
+
+        console.log("Going Forward")
+    }
+
+    /* Listeners */
+
+    // Start Recording Listener
+    $("#record").click(startRecording)
+
+    // Stop Recording Listener
+    $("#stop").click(stopRecording)
+
+    // Play Recording Listener
+    $("#play").click(playRecording)
+
+    // Export Recording Listener
+    $("#export").click(exportRecording)
+
+    // Go Backwards Listener
+    $("#back").click(goBackwards)
+
+    // Go Forward Listener
+    $("#forward").click(goForward)
+
+    // Draggable sections
+    $( ".track_section" ).draggable({ axis: "x" })
 })

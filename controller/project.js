@@ -135,23 +135,47 @@ router.post('/:project_id/track_colour', async function(req, res) {
 })
 
 /* Delete a Project */
-router.delete('/:project_id/delete', async (req, res) => {
+router.delete('/:project_id/delete_project', async (req, res) => {
     try {
 
-        // Find the project on the database
+        // Get the Project
         let project = await Project.findOne({ project_id: req.params.project_id })
 
-        // Remove user
+        // Remove the Project
         removedProject = await project.remove()
-        console.log("Project removed")
+        console.log("Project removed successfully")
+        res.send({ message: "Project removed Successfully" })
 
-        // Redirect to Main Page
-        res.redirect('/')
+    } catch(error) {
 
-    } catch {
+        console.log(error)
+        res.send({ message: "Project could not be deleted"});
+    }
+})
 
-        // Redirect to Main Page
-        res.redirect('/')
+/* Delete a Track */
+router.delete('/:project_id/delete_track', async (req, res) => {
+    try {
+
+        // Find the Project
+        let project = await Project.findOne({ project_id: req.params.project_id })
+
+        // Find the track
+        let track_id = req.body.track_id
+        let track = project.tracks.find(obj => obj.track_id == track_id)
+
+        // Delete the track
+        project.tracks.splice(track, 1)
+
+        // Update Database
+        const saved_project = await project.save()
+        console.log("Track Removed successfully")
+        res.send({ message: "Track removed Successfully" })
+
+    } catch (error) {
+
+        console.log(error)
+        res.send({ message: "Track could not be deleted"});
     }
 })
 
