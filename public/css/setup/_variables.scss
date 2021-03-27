@@ -42,31 +42,45 @@ $border: 4px;
 
 }
 
+// Colours
+$purple: $secondary;
+$red: #E798AF;
+$orange: #E7B598;
+$yellow: #E7DC98;
+$green: $primary;
+$blue: #98CAE7;
+
 // Track colours
 @mixin track_colours(){
-    &.purple { background-color: $secondary }
-    &.red { background-color: #E798AF }
-    &.orange { background-color: #E7B598 }
-    &.yellow { background-color: #E7DC98 }
-    &.green { background-color: $primary }
-    &.blue { background-color: #98CAE7 }
-}
-// Track Colour Border
-@mixin track_colour_border(){
-    &.purple { border: solid 1px $secondary }
-    &.red { border: solid 1px #E798AF }
-    &.orange { border: solid 1px #E7B598 }
-    &.yellow { border: solid 1px #E7DC98 }
-    &.green { border: solid 1px $primary }
-    &.blue { border: solid 1px #98CAE7 }
+    &.purple { background-color: $purple }
+    &.red    { background-color: $red }
+    &.orange { background-color: $orange }
+    &.yellow { background-color: $yellow }
+    &.green  { background-color: $green }
+    &.blue   { background-color: $blue }
 }
 
 // Track colours
 @mixin track_colour_shadow(){
-    &.purple { box-shadow: $size-8 0 0 0 $secondary inset}
-    &.red { box-shadow: $size-8 0 0 0 #E798AF inset}
-    &.orange { box-shadow: $size-8 0 0 0 #E7B598 inset}
-    &.yellow { box-shadow: $size-8 0 0 0 #E7DC98 inset}
-    &.green { box-shadow: $size-8 0 0 0 $primary inset}
-    &.blue { box-shadow: $size-8 0 0 0 #98CAE7 inset}
+    &.purple { box-shadow: inset $size-8 0 0 0 $purple }
+    &.red    { box-shadow: inset $size-8 0 0 0 $red    }
+    &.orange { box-shadow: inset $size-8 0 0 0 $orange }
+    &.yellow { box-shadow: inset $size-8 0 0 0 $yellow }
+    &.green  { box-shadow: inset $size-8 0 0 0 $green  }
+    &.blue   { box-shadow: inset $size-8 0 0 0 $blue   }
+}
+
+// Track Colour Border
+@mixin recording_track_colour(){
+
+    // Recording Track Colour
+    &.purple { & > * { background-color: $purple } }
+    &.red    { & > * { background-color: $red    } }
+    &.orange { & > * { background-color: $orange } }
+    &.yellow { & > * { background-color: $yellow } }
+    &.green  { & > * { background-color: $green  } }
+    &.blue   { & > * { background-color: $blue   } }
+
+    // Border
+    & > * { border: solid 1px rgba($black, 0.1) }
 }

@@ -134,6 +134,34 @@ router.post('/:project_id/track_colour', async function(req, res) {
     }
 })
 
+/* Add a new Recording */
+router.post('/:project_id/add_recording/', async function(req, res) {
+    try {
+
+        // Get the existing Project
+        let project = await Project.findOne({ project_id: req.params.project_id })
+
+        // Get the passed Object
+        let passed_data = req.body
+
+        // Create a new Recording
+        let new_recording = {
+            recording_id: randomString(10),
+            start_second: "",
+            audio: ""
+        }
+
+        // Save the recording 
+        const saved_project = await project.save()
+        res.send({ message: "Track Added Successfully" })
+        console.log("Recording Added Successfully")
+
+    } catch(error) {
+
+        console.log("Recording could not be added: " + error + "\n")
+    }
+})
+
 /* Delete a Project */
 router.delete('/:project_id/delete_project', async (req, res) => {
     try {
@@ -171,6 +199,26 @@ router.delete('/:project_id/delete_track', async (req, res) => {
         const saved_project = await project.save()
         console.log("Track Removed successfully")
         res.send({ message: "Track removed Successfully" })
+
+    } catch (error) {
+
+        console.log(error)
+        res.send({ message: "Track could not be deleted"});
+    }
+})
+
+/* Delete Recording */
+router.delete('/:project_id/delete_recording', async (req, res) => {
+    try {
+
+        // Find the Project
+        let project = await Project.findOne({ project_id: req.params.project_id })
+
+        // Get the Recording
+
+        // Delete Recording
+
+        // Save to Database
 
     } catch (error) {
 

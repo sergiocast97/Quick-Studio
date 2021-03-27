@@ -1,0 +1,17 @@
+<div class="app_main_track_area">
+
+    <div class="recording_track_list">
+        <% for(track of track_list){ %>
+
+            <!-- Track -->
+            <div class="recording_track <%- track.track_colour %>" id="<%- track.track_id %>">
+                <% for(recording of track.recordings){ %>
+
+                    <!-- Recording -->
+                    <div class="track_section" start="0" duration="1" ></div>
+                
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+</div>

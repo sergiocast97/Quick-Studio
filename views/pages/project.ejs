@@ -19,24 +19,9 @@
             <!-- Track Bar -->
             <%- include('../components/app/track_bar', { track_list : track_list }) %>
 
-            <div class="app_main_track_area">
+            <!-- Track Main -->
+            <%- include('../components/app/track_main', { track_list : track_list }) %>
 
-                <div class="recording_track_list">
-                    <% for(track of track_list){ %>
-
-                        <!-- Track -->
-                        <div class="recording_track" id="<%- track.track_id %>">
-                            <% for(recording of track.recordings){ %>
-
-                                <!-- Recording -->
-                                <!-- <div class="track_section <%- track.track_colour %>" start="0" duration="1" ></div> -->
-                            
-                            <% } %>
-                        </div>
-
-                    <% } %>
-                </div>
-            </div>
         </div>
 
         <!-- Bottom Bar -->

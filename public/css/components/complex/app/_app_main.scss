@@ -2,6 +2,8 @@
 
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
 
     .app_main_track_area {
 
@@ -21,20 +23,20 @@
                 width: 100%;
                 background-color: rgba($neutral-light-2, 0.65);
                 margin-bottom: $size-16;
+                display: flex;
 
                 .track_section {
 
                     cursor: pointer;
                     height: 100%;
-                    width: 100px;
+                    //width: 100px;
                     border-radius: $border;
-
-                    border: solid 1px $neutral-dark-1;
-                    background-color: $neutral;
-                    
-                    @include track_colours();
-                    @include track_colour_border();
+                    //border: solid 1px $neutral-dark-1;
+                    //background-color: $neutral;
+                    @include center_align();
                 }
+
+                @include recording_track_colour();
             }
         }
     }

@@ -1,15 +1,15 @@
+/* Variables */
+
+// Get the Project ID
+const project_id = window.location.pathname.split('/')[2]
+
+// List of colours
+const colours = [ "purple", "red", "orange", "yellow", "green", "blue"]
+
+// Currently Selected track
+let selected_track = ""
+
 $(function() {
-
-    /* Variables */
-
-    // Get the Project ID
-    const project_id = window.location.pathname.split('/')[2]
-    
-    // List of colours
-    const colours = [ "purple", "red", "orange", "yellow", "green", "blue"]
-
-    // Currently Selected track
-    let selected_track = ""
 
     // Toaster settings
     toastr.options = {
@@ -30,7 +30,41 @@ $(function() {
         "hideMethod": "fadeOut"
     }
 
-    /* Update the Project Name */
+    /* Listeners */
+
+    // Project name listener
+    $("#project_name").keyup(updateProjectName)
+
+    // Add Track listener
+    $("#add_track" ).click(addTrack)
+
+    // Add Track listener
+    $("#delete_track" ).click(deleteTrack)
+
+    // Track Name Listener
+    $(".track_name").keyup(updateTrackName)
+
+    // Track Colour Listener
+    $(".track_colour").click(updateTrackColour)
+
+    // Select Track Listener
+    $(".track").click(selectTrack)
+
+    // Select Recording Listener
+    $(".recording").click(selectRecording)
+
+    // Select Recording Listener
+    $("#delete_recording").click(deleteRecording)
+
+    // Deselect Track Listener
+    $(".app_main_track_area").click(deselectTrack)
+
+    // Delete Project
+    $("#delete_project" ).click(deleteProject)
+
+    /* Functions */
+
+    // Update the Project Name
     function updateProjectName() {
         // Register the Enter key
         if (event.keyCode === 13) {
@@ -60,7 +94,7 @@ $(function() {
         }
     }
 
-    /* Add new track */
+    // Add new track
     function addTrack() {
 
         // Get the Object to Pass
@@ -99,7 +133,7 @@ $(function() {
                         `</div>`
                     )
                     $(".recording_track_list").append(
-                        `<div class="recording_track" id="${ response.track_id }"></div>`
+                        `<div class="recording_track ${ response.track_colour }" id="${ response.track_id }"></div>`
                     )
                     
                     // Add the listeners
@@ -111,7 +145,7 @@ $(function() {
         })
     }
 
-    /* Delete Track */
+    // Delete Track
     function deleteTrack() {
         if( selected_track !== "" ){
 
@@ -143,7 +177,7 @@ $(function() {
         }
     }
 
-    /* Update Track name */
+    // Update Track name
     function updateTrackName() {
         // Register the Enter key
         if (event.keyCode === 13) {
@@ -178,7 +212,7 @@ $(function() {
         }
     }
 
-    /* Update track colour */
+    // Update track colour
     function updateTrackColour() {
 
         // Get the ID of the track
@@ -216,13 +250,13 @@ $(function() {
                     $('#' + track_id).removeClass(current_colour).addClass(response.new_colour)
 
                     // Replace the recording colour
-                    $('.recording_track#' + track_id).children().removeClass(current_colour).addClass(response.new_colour)
+                    $('.recording_track#' + track_id).removeClass(current_colour).addClass(response.new_colour)
                 }
             }
         })
     }
     
-    /* Select Track */
+    // Select Track
     function selectTrack() {
 
         // Remove a previous selected track
@@ -236,7 +270,7 @@ $(function() {
         $(".track#" + selected_track).addClass("selected")        
     }
 
-    /* Deselect track */
+    // Deselect track
     function deselectTrack() {
 
         // Remove a previous selected track
@@ -246,17 +280,17 @@ $(function() {
         selected_track = ""
     }
 
-    /* Select Recording */
+    // Select Recording
     function selectRecording() {
 
     }
 
-    /* Delete Recording */
+    // Delete Recording
     function deleteRecording() {
 
     }
 
-    /* Delete Project */
+    // Delete Project
     function deleteProject() {
         
         $.ajax({
@@ -277,36 +311,4 @@ $(function() {
             }
         })
     }
-
-    /* Listeners */
-
-    // Project name listener
-    $("#project_name").keyup(updateProjectName)
-
-    // Add Track listener
-    $("#add_track" ).click(addTrack)
-
-    // Add Track listener
-    $("#delete_track" ).click(deleteTrack)
-
-    // Track Name Listener
-    $(".track_name").keyup(updateTrackName)
-
-    // Track Colour Listener
-    $(".track_colour").click(updateTrackColour)
-
-    // Select Track Listener
-    $(".track").click(selectTrack)
-
-    // Select Recording Listener
-    $(".recording").click(selectRecording)
-
-    // Select Recording Listener
-    $("#delete_recording").click(deleteRecording)
-
-    // Deselect Track Listener
-    $(".app_main_track_area").click(deselectTrack)
-
-    // Delete Project
-    $("#delete_project" ).click(deleteProject)
 })
