@@ -9,7 +9,10 @@ $(function() {
     //$("#stop").click(stopRecording)
 
     // Play Recording Listener
-    //$("#play").click(playRecording)
+    $("#play").click(replayRecording)
+
+    // Pause Recording Listener
+    $("#pause").click(pauseReplay)
 
     // Export Recording Listener
     $("#export").click(exportRecording)
@@ -103,7 +106,7 @@ $(function() {
 
                     // Convert stream data chunks to a 'webm' audio format as a blob
                     const blob = new Blob(chunks, { type: 'audio/'+extension, bitsPerSecond:128000})
-                    createDownloadLink(blob)
+                    uploadRecording(blob)
                     }
                 };
         
@@ -168,43 +171,87 @@ $(function() {
         // Stop microphone access
         gumStream.getAudioTracks()[0].stop();
     }
+    
+    // Upload to server
+    function uploadRecording(blob){
+
+        let form_data = new FormData()
+        form_data.append('recording', blob)
+        form_data.append('track_id', selected_track)
+        form_data.append('start_second', 0)
+
+        // Upload recording via AJAX
+        $.ajax({
+            // Establish the request type and URL
+            type: "POST",
+            url: "/project/" + project_id + "/add_recording",
+            // Establish the type and format of Data
+            processData: false,
+            contentType: false,
+            data: form_data,
+            // Update the Names
+            success: function(response, status, http) {
+                if (response) {
+
+                    console.log(response.message)
+                    displayRecording(blob, response.recording_id, response.start)
+                }
+            }
+        })
+    }
 
     // Create Download Link
-    function createDownloadLink(blob) {
+    function displayRecording(blob, id, start) {
 	
         var url = URL.createObjectURL(blob);
         var au = document.createElement('audio');
-        var li = document.createElement('li');
-        var link = document.createElement('a');
-    
+        var div = document.createElement('div');
+
         // Add controls to the <audio> element
         au.controls = true;
         au.src = url;
-    
-        // Link the a element to the blob
-        link.href = url;
-        link.download = new Date().toISOString() + '.'+extension;
-        link.innerHTML = link.download;
-    
-        // Add the new audio and a elements to the li element
-        li.appendChild(au);
-        //li.appendChild(link);
+        div.appendChild(au);
     
         // Add the recording
         $('.recording_track#'+selected_track ).append(
-            `<div class="track_section" start="0" duration="1" >` +
-                li.innerHTML +
+            `<div class="track_section" id="${ id }" start="${ start }" duration="1" >` +
+                div.innerHTML +
             `</div>`
         )
     }
 
     // Play Recordings
-    function playRecording() {
+    function replayRecording() {
 
         console.log("Playing the Recordings")
+        
+        // Get all the audio items in the project
+        let audio_list = $(".track_section audio")
 
-        var audio = new Audio( $(".track_section audio").attr("src") )
-        audio.play()
+        // Play all of them at the same time
+        for(audio of audio_list){
+            audio.play()
+        }
+
+        // Hide play and show pause
+
+        
+    }
+
+    // Play Recordings
+    function pauseReplay() {
+
+        console.log("Playing the Recordings")
+        
+        // Get all the audio items in the project
+        let audio_list = $(".track_section audio")
+
+        // Play all of them at the same time
+        for(audio of audio_list){
+            audio.pause()
+        }
+
+        // Hide pause and show play        
     }
 
     // Export the Recordings

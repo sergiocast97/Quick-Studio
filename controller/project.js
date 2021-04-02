@@ -1,7 +1,21 @@
 // Requiring necessary modules
 const express = require('express')
+const path = require('path')
+const fs = require('fs')
 const router = express.Router()
+const multer = require('multer')
 const Project = require('../model/project')
+const Track = require('../model/project')
+const Recording = require('../model/project')
+
+// Initialize Multer
+//const recordingMimeType = ['images/jpeg', 'images/png', 'images/gif']
+const upload = multer({
+    // Destination Folder
+    dest: path.join('public', Project.recordingBasePath),
+    // Filter File Types
+    //fileFilter: (req, file, callback) => { callback(null, recordingMimeType.includes(file.mimetype)) }
+})
 
 /* Update Project Name */
 router.post('/:project_id/project_name', async function(req, res) {
@@ -9,7 +23,6 @@ router.post('/:project_id/project_name', async function(req, res) {
 
         // Get the Project
         let project = await Project.findOne({ project_id: req.params.project_id })
-        console.log(`Project: ${ project.name } (${ project.project_id })`)
 
         // Get the passed Object
         let passed_data = req.body
@@ -22,7 +35,7 @@ router.post('/:project_id/project_name', async function(req, res) {
         // Save and send new details
         const saved_project = await project.save()
         res.send({ message: "Project Name updated successfully", project_name: saved_project.name });
-        console.log("Project Name updated successfully")
+        console.log("Project Name updated successfully \n")
 
     } catch(error) {
 
@@ -34,41 +47,36 @@ router.post('/:project_id/project_name', async function(req, res) {
 /* Add a new Track */
 router.post('/:project_id/add_track/', async function(req, res) {
     try {
-
         // Get the existing Project
-        let project = await Project.findOne({ project_id: req.params.project_id })
+        await Project.findOne({ project_id: req.params.project_id },  async function (err, project) {
 
-        // Get the passed Object
-        let passed_data = req.body
+            // Get the colours
+            let colours = [ "purple", "red", "orange", "yellow", "green", "blue"]
+            let colour = colours[Math.floor(Math.random() * colours.length)];
 
-        // Get the colours
-        let colours = [ "purple", "red", "orange", "yellow", "green", "blue"]
-        let colour = colours[Math.floor(Math.random() * colours.length)];
+            // Create a new Track
+            const track = {
+                track_id: randomString(10),
+                track_name: req.body.track_name,
+                track_colour: colour
+            }
 
-        // Create a new Track
-        let new_track = {
-            track_id: randomString(10),
-            track_name: passed_data.track_name,
-            track_colour: colour,
-            recordings: []
-        }
+            // Push to the Project
+            project.tracks.push(track)
+            project.last_modified_date = Date.now()
 
-        // Push to the Project
-        project.tracks.push(new_track)
-        project.last_modified_date = Date.now()
-
-        // Save the project details
-        const saved_project = await project.save()
-        
-        // Redirect to the settings page
-        res.send({
-            message: "Track Added Successfully",
-            track_id: new_track.track_id,
-            track_name: new_track.track_name,
-            track_colour: new_track.track_colour
-        });
-        console.log("Track Added Successfully")
-
+            // Save the project details
+            await project.save()
+            
+            // Redirect to the settings page
+            res.send({
+                message: "Track Added Successfully",
+                track_id: track.track_id,
+                track_name: track.track_name,
+                track_colour: track.track_colour
+            })
+            console.log("Track Added Successfully \n")
+        })
     } catch(error) {
 
         console.log("Track could not be added: " + error + "\n")
@@ -81,7 +89,6 @@ router.post('/:project_id/track_name', async function(req, res) {
 
         // Get the Project
         let project = await Project.findOne({ project_id: req.params.project_id })
-        console.log(`Project: ${ project.name } (${ project.project_id })`)
 
         // Get the passed Object
         let passed_data = req.body
@@ -95,7 +102,7 @@ router.post('/:project_id/track_name', async function(req, res) {
         // Save and send new details
         const saved_project = await project.save()
         res.send({ message: "Track Name updated successfully", track_name: saved_project.tracks.find(obj => obj.track_id == track_id).track_name });
-        console.log("Track Name updated successfully")
+        console.log("Track Name updated successfully \n")
 
     } catch(error) {
 
@@ -110,13 +117,11 @@ router.post('/:project_id/track_colour', async function(req, res) {
 
         // Get the Project
         let project = await Project.findOne({ project_id: req.params.project_id })
-        console.log(`Project: ${ project.name } (${ project.project_id })`)
 
         // Get the passed Object
         let passed_data = req.body
         let track_id = passed_data.track_id
         let new_colour = passed_data.track_colour
-        console.log(`Track ID ${ track_id }, Colour: ${ new_colour }`)
 
         // Update the track name and Last Modified Date
         project.tracks.find(obj => obj.track_id == track_id).track_colour = new_colour
@@ -125,7 +130,7 @@ router.post('/:project_id/track_colour', async function(req, res) {
         // Save and send new details
         const saved_project = await project.save()
         res.send({ message: "Track Colour updated successfully", new_colour: saved_project.tracks.find(obj => obj.track_id == track_id).track_colour });
-        console.log("Track Colour updated successfully")
+        console.log("Track Colour updated successfully \n")
 
     } catch(error) {
 
@@ -135,27 +140,33 @@ router.post('/:project_id/track_colour', async function(req, res) {
 })
 
 /* Add a new Recording */
-router.post('/:project_id/add_recording/', async function(req, res) {
+router.post('/:project_id/add_recording/', upload.single('recording') ,async function(req, res) {
     try {
+        await Project.findOne({ project_id: req.params.project_id }, async function (err, project) {
+        
+            // Inside the project, find the track
+            const track = project.tracks.filter( track => {
+                return track.track_id === req.body.track_id
+            }).pop()
 
-        // Get the existing Project
-        let project = await Project.findOne({ project_id: req.params.project_id })
+            // Create a new recording and add it
+            const recording = {
+                recording_id: randomString(5),
+                start_second: req.body.start_second,
+                audio: req.file.path
+            }
 
-        // Get the passed Object
-        let passed_data = req.body
+            // Push recording to the track
+            track.recordings.push(recording)
 
-        // Create a new Recording
-        let new_recording = {
-            recording_id: randomString(10),
-            start_second: "",
-            audio: ""
-        }
+            // Save Project
+            await project.save()
 
-        // Save the recording 
-        const saved_project = await project.save()
-        res.send({ message: "Track Added Successfully" })
-        console.log("Recording Added Successfully")
+            // Response
+            console.log("Recording Added Successfully \n")
+            res.send({ message: "Track Added Successfully", recording_id: recording.recording_id,  start_second: recording.start_second })
 
+        })
     } catch(error) {
 
         console.log("Recording could not be added: " + error + "\n")
@@ -171,12 +182,12 @@ router.delete('/:project_id/delete_project', async (req, res) => {
 
         // Remove the Project
         removedProject = await project.remove()
-        console.log("Project removed successfully")
+        console.log("Project removed successfully \n")
         res.send({ message: "Project removed Successfully" })
 
     } catch(error) {
 
-        console.log(error)
+        console.log(error + "\n")
         res.send({ message: "Project could not be deleted"});
     }
 })
@@ -184,25 +195,24 @@ router.delete('/:project_id/delete_project', async (req, res) => {
 /* Delete a Track */
 router.delete('/:project_id/delete_track', async (req, res) => {
     try {
+        await Project.findOne({ project_id: req.params.project_id }, async function (err, project) {
 
-        // Find the Project
-        let project = await Project.findOne({ project_id: req.params.project_id })
+            // Find the track
+            let track = project.tracks.filter( track => {
+                return track.track_id === req.body.track_id
+            })
 
-        // Find the track
-        let track_id = req.body.track_id
-        let track = project.tracks.find(obj => obj.track_id == track_id)
+            // Delete the track
+            project.tracks.splice(track, 1)
 
-        // Delete the track
-        project.tracks.splice(track, 1)
-
-        // Update Database
-        const saved_project = await project.save()
-        console.log("Track Removed successfully")
-        res.send({ message: "Track removed Successfully" })
-
+            // Update Database
+            await project.save()
+            console.log("Track Removed successfully \n")
+            res.send({ message: "Track removed Successfully" })
+        })
     } catch (error) {
 
-        console.log(error)
+        console.log(error + "\n")
         res.send({ message: "Track could not be deleted"});
     }
 })
@@ -210,19 +220,28 @@ router.delete('/:project_id/delete_track', async (req, res) => {
 /* Delete Recording */
 router.delete('/:project_id/delete_recording', async (req, res) => {
     try {
+        await Project.findOne({ project_id: req.params.project_id }, async function (err, project) {
+        
+            // Find track
+            let track = project.tracks.filter( track => {
+                return track.track_id === req.body.track_id
+            })
 
-        // Find the Project
-        let project = await Project.findOne({ project_id: req.params.project_id })
+            // Find recording and delete it
+            track.recordings.filter( recording => {
+                return recording.recording_id === req.body.recording_id
+            }).pop()
 
-        // Get the Recording
+            // Save Project
+            await project.save()
 
-        // Delete Recording
-
-        // Save to Database
-
+            // Response
+            console.log("Recording Deleted Successfully \n")
+            res.send({ message: "Recording deleted Successfully"})
+        })
     } catch (error) {
 
-        console.log(error)
+        console.log(error + "\n")
         res.send({ message: "Track could not be deleted"});
     }
 })

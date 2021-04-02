@@ -25,8 +25,12 @@ http://localhost:3000/
 
 ## Built With
 
+* [Node.js](https://nodejs.org/en/) - JavaScript runtime built on Chrome's V8 Js engine
 * [Express.js](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js
 * [Sass](https://sass-lang.com/) - CSS with superpowers
+* [MongoDB](https://www.mongodb.com/) - The modern database for modern applications
+* [Mongoose](https://mongoosejs.com/) - Elegant mongoDB object modelling for Node.js
+* [Passport](http://www.passportjs.org/) - Simple, unobstrusive authentication for Node.js
 
 ## Authors
 

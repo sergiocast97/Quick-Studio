@@ -50,13 +50,12 @@ router.use(passport.session())
 router.use(methodOverride('_method'))
 
 // Initialising multer
-const uploadPath = path.join('public', User.profilePictureBasePath)
 const imageMimeTypes = ['images/jpeg', 'images/png', 'images/gif']
 const upload = multer({
-    dest: uploadPath,
-    fileFilter: (req, file, callback) => {
-        callback(null, imageMimeTypes.includes(file.mimetype))
-    }
+    // Destination Folder
+    dest: path.join('public', User.profilePictureBasePath),
+    // Filter File Types
+    fileFilter: (req, file, callback) => { callback(null, imageMimeTypes.includes(file.mimetype)) }
 })
 
 // Make sure the user is authenticated
@@ -92,7 +91,7 @@ function randomString(length) {
 
 /* Handling routes */
 
-/* Show Tes Page */
+/* Show Test Page */
 router.get('/test', function (req, res) {
     res.render('pages/test', { title: 'Test Page', name: "Test Area" })
 })
@@ -165,11 +164,11 @@ router.post('/new', checkAuthenticated, async (req, res) => {
 
         // Generate ID and make sure it's unique
         let new_id = ""
-        do { new_id = randomString(24) } while (! await Project.find({ id: new_id }))
+        do { new_id = randomString(24) } while (!await Project.find({ id: new_id }))
 
         // Create a new empty project
         const project = new Project({ project_id: new_id, name: "New Project" })
-        console.log(JSON.stringify(project))
+        //console.log(JSON.stringify(project))
         
         // Save the Project and Redirect to new project
         const new_project = await project.save()
@@ -187,7 +186,7 @@ router.post('/new', checkAuthenticated, async (req, res) => {
 router.get('/project/:project_id', checkAuthenticated, async (req, res) => {
 
     // Get the project
-    console.log("Going to: " + req.params.project_id )
+    console.log("Going to: " + req.params.project_id + "\n")
     const project = await Project.findOne({ project_id: req.params.project_id })
 
     // Render the project page

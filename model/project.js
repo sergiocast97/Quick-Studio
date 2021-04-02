@@ -6,7 +6,7 @@ const projectImageBasePath = 'uploads/projectImage'
 // Project Recording Location
 const recordingBasePath = 'uploads/recording'
 
-// Declaring the Recording schema
+// Declaring and exporting the Recording schema
 const recordingSchema = new mongoose.Schema({
 
     // Disable IDs
@@ -32,13 +32,10 @@ const recordingSchema = new mongoose.Schema({
     },
 
 })
+module.exports = mongoose.model('Recording', recordingSchema)
 
 // Declaring the Track schema
 const trackSchema = new mongoose.Schema({
-
-    // Disable IDs
-    id: false,
-    _id: false,
 
     // Track Id
     track_id: {
@@ -62,6 +59,7 @@ const trackSchema = new mongoose.Schema({
     recordings: [recordingSchema]
 
 })
+module.exports = mongoose.model('Track', trackSchema)
 
 // Declaring the Project schema
 const projectSchema = new mongoose.Schema({
@@ -108,8 +106,7 @@ const projectSchema = new mongoose.Schema({
     // Project List of Tracks
     tracks: [trackSchema]
 })
-
-// Export the user model
 module.exports = mongoose.model('Project', projectSchema)
+
 module.exports.projectImageBasePath = projectImageBasePath
 module.exports.recordingBasePath = recordingBasePath
